@@ -13,7 +13,7 @@ const AppLayout = () => {
         <Navbar>
           <div className="flex items-center justify-between text-2xl">
             <span>
-              <PiArrowLeftFill />
+              <PiArrowLeftFill className="text-3xl" />
             </span>
             <span className="font-semibold">Add Project</span>
             <span>
@@ -21,6 +21,7 @@ const AppLayout = () => {
             </span>
           </div>
         </Navbar>
+        <Outlet />
         <MenuBar />
       </main>
     </>
