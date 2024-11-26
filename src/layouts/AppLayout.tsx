@@ -1,22 +1,43 @@
+import { ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
 import { FaCalendarDays } from "react-icons/fa6";
 import { RiStickyNoteFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
+import { PiArrowLeftFill } from "react-icons/pi";
 const AppLayout = () => {
   return (
     <>
       <main className="h-screen bg-white relative">
-        <Footer />
+        <Navbar>
+          <div className="flex items-center justify-between text-2xl">
+            <span>
+              <PiArrowLeftFill />
+            </span>
+            <span className="font-semibold">Add Project</span>
+            <span>
+              <FaUser />
+            </span>
+          </div>
+        </Navbar>
+        <MenuBar />
       </main>
     </>
   );
 };
 
-function Footer() {
+function Navbar({ children }: { children: ReactNode }) {
   return (
-    <footer className="absolute bottom-0 w-full bg-lightPrimary py-5 px-10 rounded-3xl">
+    <div className="position-fixed bg-transparent top-0 w-full py-5 px-6">
+      {children}
+    </div>
+  );
+}
+
+function MenuBar() {
+  return (
+    <section className="fixed bottom-0 w-full bg-lightPrimary py-5 px-10 rounded-3xl">
       <div className="relative flex items-center justify-between text-primary">
         <span>
           <RiHomeFill className="text-2xl mx-2" />
@@ -35,7 +56,7 @@ function Footer() {
           <FaUser className="text-2xl mx-2" />
         </span>
       </div>
-    </footer>
+    </section>
   );
 }
 
