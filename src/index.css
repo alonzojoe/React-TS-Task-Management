@@ -7,3 +7,26 @@
     @apply inline-block bg-primary text-white py-3 px-8 rounded-xl font-semibold hover:bg-primaryDark duration-200;
   }
 }
+
+@layer utilities {
+  .drop-shadow {
+    /* filter: drop-shadow(6px 8px 10px rgba(95, 51, 225, 0.5)); */
+    filter: drop-shadow(0px 8px 10px rgba(95, 51, 225, 0.5));
+  }
+
+  .half-border {
+    position: relative;
+  }
+
+  .half-border::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    width: 100%;
+    border-bottom: 5px solid white;
+    border-radius: 0 0 50% 50%;
+  }
+}
