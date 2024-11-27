@@ -5,6 +5,7 @@ type CircularProgressBarProps = {
   textColor: string;
   strokeColor: string;
   fillColor: string;
+  textSize?: string;
 };
 
 const CircularProgressBar = ({
@@ -14,6 +15,7 @@ const CircularProgressBar = ({
   textColor = "text-white",
   strokeColor = "#8764FF",
   fillColor = "#EEE9FF",
+  textSize = "text-xl",
 }: CircularProgressBarProps) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -56,7 +58,7 @@ const CircularProgressBar = ({
       </svg>
 
       {/* Percentage Text */}
-      <div className={`absolute text-xl font-semibold ${textColor}`}>
+      <div className={`absolute ${textSize} font-semibold ${textColor}`}>
         {percentage}%
       </div>
     </div>

@@ -1,9 +1,10 @@
 import Card from "../../components/UI/Card";
 import CircularProgressBar from "../../components/UI/CircularProgressBar";
 import { IoBagHandleSharp } from "react-icons/io5";
+import { TbUserPentagon } from "react-icons/tb";
 const Dashboard = () => {
   return (
-    <div className="container grid grid-cols-1 md:grid-cols-2 py-10">
+    <div className="container grid grid-cols-1 md:grid-cols-2 py-2 bg-[#FAFAFA]">
       <div className="flex flex-col justify-center space-y-8">
         <Card background="primary" width="w-full">
           <div className="flex justify-center items-center gap-4 py-2">
@@ -85,14 +86,68 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="mt-5">
-        <div className="flex items-center gap-3 space-x-6">
+      <div className="mt-5 mb-10">
+        <div className="flex items-center gap-3 mb-3">
           <h2 className="text-left text-textPrimary font-bold text-2xl">
             Task Groups
           </h2>
           <div className="w-[25px] h-[25px] p-2 font-bold text-primary bg-lightPrimary rounded-full flex items-center justify-center">
             4
           </div>
+        </div>
+        <div className="grid grid-cols-1 space-y-4">
+          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="bg-lightPink p-2 rounded-xl">
+                  <IoBagHandleSharp className="text-2xl text-darkPink" />
+                </span>
+                <div>
+                  <h4 className="text-textPrimary text-md font-bold mb-0">
+                    Office Project
+                  </h4>
+                  <span className="text-textSecondary text-sm">23 Tasks</span>
+                </div>
+              </div>
+              <div>
+                <CircularProgressBar
+                  textColor="text-black"
+                  strokeColor="#FFE4F2"
+                  fillColor="#F57CBA"
+                  percentage={75}
+                  size={50}
+                  strokeWidth={5}
+                  textSize="text-sm"
+                />
+              </div>
+            </div>
+          </Card>
+          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="bg-lightPrimary p-2 rounded-xl">
+                  <TbUserPentagon className="text-2xl text-primary" />
+                </span>
+                <div>
+                  <h4 className="text-textPrimary text-md font-bold mb-0">
+                    Personal Project
+                  </h4>
+                  <span className="text-textSecondary text-sm">23 Tasks</span>
+                </div>
+              </div>
+              <div>
+                <CircularProgressBar
+                  textColor="text-black"
+                  strokeColor="#E8E1FB"
+                  fillColor="#5F33E1"
+                  percentage={45}
+                  size={50}
+                  strokeWidth={5}
+                  textSize="text-sm"
+                />
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     </div>
