@@ -2,18 +2,9 @@ import Card from "../../components/UI/Card";
 import CircularProgressBar from "../../components/UI/CircularProgressBar";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { TbUserPentagon } from "react-icons/tb";
-import BackgroundImg from "../../assets/images/background.png";
 const Dashboard = () => {
   return (
-    <div
-      className="container grid grid-cols-1 md:grid-cols-2 py-2 bg-[#FAFAFA]"
-      style={{
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundImage: `url(${BackgroundImg})`,
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className="container grid grid-cols-1 md:grid-cols-2 py-2">
       <div className="flex flex-col justify-center space-y-8">
         <Card background="primary" width="w-full">
           <div className="flex justify-center items-center gap-4 py-2">

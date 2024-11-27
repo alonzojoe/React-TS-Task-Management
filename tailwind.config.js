@@ -21,6 +21,8 @@ export default {
         lightBlue: "#E7F3FF",
         darkOrange: "#FF7D53",
         lightOrange: "#FFE9E1",
+        bgInactive: "#B5A0F3",
+        bgActive: "#5F33E1",
       },
       container: {
         center: true,
