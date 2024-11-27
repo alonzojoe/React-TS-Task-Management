@@ -1,10 +1,13 @@
 import BannerImg from "../../assets/images/home.png";
 import Background from "../../assets/images/background.png";
 import { PiArrowRightFill } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <section
-      className="overflow-x-hidden bg-cover bg-center"
+      className="overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: `url(${Background})`,
         backgroundRepeat: "no-repeat",
@@ -24,7 +27,10 @@ const Home = () => {
               task project-wise conveniently!
             </p>
             <div>
-              <button className="primary-btn flex justify-between items-center text-2xl w-full">
+              <button
+                className="primary-btn flex justify-between items-center text-2xl w-full"
+                onClick={() => navigate("/dashboard")}
+              >
                 <span></span>
                 <span>Let&apos;s Start</span>
                 <span>
