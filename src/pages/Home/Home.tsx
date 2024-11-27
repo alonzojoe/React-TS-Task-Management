@@ -29,7 +29,7 @@ const Home = () => {
             <div>
               <button
                 className="primary-btn flex justify-between items-center text-2xl w-full"
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate("/home")}
               >
                 <span></span>
                 <span>Let&apos;s Start</span>
