@@ -6,6 +6,8 @@ import { RiStickyNoteFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
 const AppLayout = () => {
   return (
     <>
@@ -13,7 +15,9 @@ const AppLayout = () => {
         <Navbar>
           <div className="flex items-center justify-between text-2xl">
             <span>
-              <PiArrowLeftFill className="text-3xl" />
+              <Link to="..">
+                <PiArrowLeftFill className="text-3xl" />
+              </Link>
             </span>
             <span className="font-semibold">Add Project</span>
             <span>
