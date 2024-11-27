@@ -2,9 +2,18 @@ import Card from "../../components/UI/Card";
 import CircularProgressBar from "../../components/UI/CircularProgressBar";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { TbUserPentagon } from "react-icons/tb";
+import BackgroundImg from "../../assets/images/background.png";
 const Dashboard = () => {
   return (
-    <div className="container grid grid-cols-1 md:grid-cols-2 py-2 bg-[#FAFAFA]">
+    <div
+      className="container grid grid-cols-1 md:grid-cols-2 py-2 bg-[#FAFAFA]"
+      style={{
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundImage: `url(${BackgroundImg})`,
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="flex flex-col justify-center space-y-8">
         <Card background="primary" width="w-full">
           <div className="flex justify-center items-center gap-4 py-2">
@@ -42,13 +51,13 @@ const Dashboard = () => {
             <div className="flex space-x-4">
               <Card background="lightBlue" shrink="shrink-0" width="w-[250px]">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-textSecondary text-xl">Office Project</h4>
-                  <span className="bg-lightPink p-2 rounded-xl">
+                  <h4 className="text-textSecondary text-md">Office Project</h4>
+                  <span className="bg-lightPink p-1 rounded-lg">
                     <IoBagHandleSharp className="text-2xl text-darkPink" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-2">
-                  <h3 className="text-textPrimary text-2xl font-semibold !leading-snug text-wrap">
+                <div className="flex items-center justify-between py-1">
+                  <h3 className="text-textPrimary text-xl font-semibold !leading-6 text-wrap">
                     Grocery shopping app design
                   </h3>
                   <div></div>
@@ -56,13 +65,13 @@ const Dashboard = () => {
               </Card>
               <Card background="lightBlue" shrink="shrink-0" width="w-[250px]">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-textSecondary text-xl">Office Project</h4>
-                  <span className="bg-lightPink p-2 rounded-xl">
+                  <h4 className="text-textSecondary text-md">Office Project</h4>
+                  <span className="bg-lightPink p-1 rounded-lg">
                     <IoBagHandleSharp className="text-2xl text-darkPink" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-2">
-                  <h3 className="text-textPrimary text-2xl font-semibold !leading-snug text-wrap">
+                <div className="flex items-center justify-between py-1">
+                  <h3 className="text-textPrimary text-xl font-semibold !leading-6 text-wrap">
                     Grocery shopping app design
                   </h3>
                   <div></div>
@@ -70,13 +79,13 @@ const Dashboard = () => {
               </Card>
               <Card background="lightBlue" shrink="shrink-0" width="w-[250px]">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-textSecondary text-xl">Office Project</h4>
-                  <span className="bg-lightPink p-2 rounded-xl">
+                  <h4 className="text-textSecondary text-md">Office Project</h4>
+                  <span className="bg-lightPink p-1 rounded-lg">
                     <IoBagHandleSharp className="text-2xl text-darkPink" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-2">
-                  <h3 className="text-textPrimary text-2xl font-semibold !leading-snug text-wrap">
+                <div className="flex items-center justify-between py-1">
+                  <h3 className="text-textPrimary text-xl font-semibold !leading-6 text-wrap">
                     Grocery shopping app design
                   </h3>
                   <div></div>
@@ -95,7 +104,7 @@ const Dashboard = () => {
             4
           </div>
         </div>
-        <div className="grid grid-cols-1 space-y-4">
+        <div className="grid grid-cols-1 space-y-8">
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
