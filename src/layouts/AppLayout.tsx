@@ -1,16 +1,17 @@
 import { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { useLocation, Outlet, Link, useNavigate } from "react-router-dom";
+
 import { RiHomeFill } from "react-icons/ri";
 import { FaCalendarDays } from "react-icons/fa6";
 import { RiStickyNoteFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+
 import BackgroundImg from "../assets/images/background.png";
 
 const AppLayout = () => {
+  const navigate = useNavigate();
   return (
     <>
       <main
@@ -24,10 +25,8 @@ const AppLayout = () => {
       >
         <Navbar>
           <div className="flex items-center justify-between text-2xl">
-            <span>
-              <Link to="..">
-                <PiArrowLeftFill className="text-3xl" />
-              </Link>
+            <span onClick={() => navigate(-1)}>
+              <PiArrowLeftFill className="text-3xl" />
             </span>
             <span className="font-semibold">Add Project</span>
             <span>

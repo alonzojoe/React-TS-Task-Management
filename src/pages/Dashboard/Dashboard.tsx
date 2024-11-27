@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className="container grid grid-cols-1 md:grid-cols-2 py-2">
       <div className="flex flex-col justify-center space-y-8">
-        <Card background="primary" width="w-full">
+        <Card background="bg-primary" width="w-full">
           <div className="flex justify-center items-center gap-4 py-2">
             <div className="space-y-6">
               <h4 className="text-xl font-semibold mb-4 text-white !leading-snug">
@@ -40,7 +40,11 @@ const Dashboard = () => {
 
           <div className="overflow-x-auto whitespace-nowrap py-4">
             <div className="flex space-x-4">
-              <Card background="lightBlue" shrink="shrink-0" width="w-[250px]">
+              <Card
+                background="bg-lightBlue"
+                shrink="shrink-0"
+                width="w-[250px]"
+              >
                 <div className="flex items-center justify-between">
                   <h4 className="text-textSecondary text-md">Office Project</h4>
                   <span className="bg-lightPink p-1 rounded-lg">
@@ -54,7 +58,11 @@ const Dashboard = () => {
                   <div></div>
                 </div>
               </Card>
-              <Card background="lightBlue" shrink="shrink-0" width="w-[250px]">
+              <Card
+                background="bg-lightOrange"
+                shrink="shrink-0"
+                width="w-[250px]"
+              >
                 <div className="flex items-center justify-between">
                   <h4 className="text-textSecondary text-md">Office Project</h4>
                   <span className="bg-lightPink p-1 rounded-lg">
@@ -68,7 +76,11 @@ const Dashboard = () => {
                   <div></div>
                 </div>
               </Card>
-              <Card background="lightBlue" shrink="shrink-0" width="w-[250px]">
+              <Card
+                background="bg-lightPrimary"
+                shrink="shrink-0"
+                width="w-[250px]"
+              >
                 <div className="flex items-center justify-between">
                   <h4 className="text-textSecondary text-md">Office Project</h4>
                   <span className="bg-lightPink p-1 rounded-lg">
