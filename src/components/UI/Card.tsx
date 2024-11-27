@@ -9,11 +9,13 @@ type CardProps = {
     | "lightOrange"
     | "lightBlue";
   width: string;
+  shrink?: string;
 };
 
-const Card = ({ children, background, width }: CardProps) => {
+const Card = ({ children, background, width, shrink = null }: CardProps) => {
+  console.log(`bg-${background}`);
   return (
-    <div className={`p-5 rounded-3xl bg-${background} ${width}`}>
+    <div className={`p-5 rounded-3xl bg-${background} ${width} ${shrink}`}>
       {children}
     </div>
   );
