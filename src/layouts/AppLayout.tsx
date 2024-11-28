@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, forwardRef, useEffect, useState } from "react";
 import { useLocation, Outlet, Link, useNavigate } from "react-router-dom";
 
 import { RiHomeFill } from "react-icons/ri";
@@ -12,6 +12,23 @@ import BackgroundImg from "../assets/images/background.png";
 
 const AppLayout = () => {
   const navigate = useNavigate();
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  const navbarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const getNavbarHeight = () => {
+      if (navbarRef.current) {
+        setNavbarHeight(navbarRef.current!.offsetHeight);
+      }
+    };
+    getNavbarHeight();
+    window.addEventListener("resize", getNavbarHeight);
+
+    return () => {
+      window.removeEventListener("resize", getNavbarHeight);
+    };
+  }, []);
+
   return (
     <>
       <main
@@ -23,7 +40,7 @@ const AppLayout = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <Navbar>
+        <Navbar ref={navbarRef}>
           <div className="flex items-center justify-between text-2xl">
             <span onClick={() => navigate(-1)}>
               <PiArrowLeftFill className="text-3xl" />
@@ -34,20 +51,36 @@ const AppLayout = () => {
             </span>
           </div>
         </Navbar>
-        <Outlet />
+        <div className={`pt-[${navbarHeight}]`}>
+          <Outlet />
+        </div>
         <MenuBar />
       </main>
     </>
   );
 };
+type NavbarProps = {
+  children: ReactNode;
+};
 
-function Navbar({ children }: { children: ReactNode }) {
+const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children }, ref) => {
   return (
-    <div className="position-fixed bg-transparent top-0 w-full py-5 px-6">
+    <div
+      ref={ref}
+      className="fixed top-0 w-full py-5 px-6 shadow-md z-50"
+      style={{
+        backgroundSize: "cover",
+        backgroundColor: "white",
+        backgroundPosition: "center",
+        backgroundImage: `url(${BackgroundImg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundBlendMode: "overlay",
+      }}
+    >
       {children}
     </div>
   );
-}
+});
 
 function MenuBar() {
   const activeClass = `text-bgActive shadow-indigo-700`;

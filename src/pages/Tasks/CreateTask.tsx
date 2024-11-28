@@ -54,7 +54,7 @@ const CreateTask = () => {
                 </div>
               </div>
               <div
-                className={`absolute rounded-lg bg-white border-[##EDEDED] border-x-2 border-b-2 w-full p-3 transition-all duration-300 ease-in-out opacity-1 ${
+                className={`absolute rounded-lg bg-white border-[#EDEDED] border-x-2 border-b-2 w-full p-3 transition-all duration-300 ease-in-out opacity-1 ${
                   toggle
                     ? "opacity-100 scale-100 visible"
                     : "opacity-0 scale-95 invisible"
@@ -64,7 +64,7 @@ const CreateTask = () => {
                   <ul className="space-y-2">
                     {list.map((item) => (
                       <li key={item}>
-                        <div className="flex items-center gap-3 hover:bg-[#F2F2F4] p-3 rounded-lg border-b borer-b-[#F2F2F4]">
+                        <div className="flex items-center gap-3 hover:bg-[#EDEDED] p-3 rounded-lg border-b borer-b-[#EDEDED]">
                           <span className="bg-lightPink p-1 rounded-lg">
                             <IoBagHandleSharp className="text-lg text-darkPink" />
                           </span>
