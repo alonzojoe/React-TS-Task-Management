@@ -5,12 +5,19 @@ type CardProps = {
   background: string;
   width: string;
   shrink?: string;
+  padding?: string;
 };
 
-const Card = ({ children, background, width, shrink = "" }: CardProps) => {
+const Card = ({
+  children,
+  background,
+  width,
+  shrink = "",
+  padding = "p-5",
+}: CardProps) => {
   return (
     <div
-      className={`p-5 rounded-3xl shadow-md ${background} ${width} ${shrink}`}
+      className={`${padding} rounded-3xl shadow-md ${background} ${width} ${shrink}`}
     >
       {children}
     </div>
