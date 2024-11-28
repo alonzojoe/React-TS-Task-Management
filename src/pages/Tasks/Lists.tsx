@@ -62,7 +62,7 @@ const Lists = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-3 pb-20">
         <Card background="cardBg" shrink="shrink-0" width="w-[full]">
           <div className="flex justify-between items-start gap-3">
             <div>
