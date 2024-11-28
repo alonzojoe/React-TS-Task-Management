@@ -1,13 +1,18 @@
 import Card from "../../components/UI/Card";
+import Calendar from "../../components/UI/Calendar";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 import { useState } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
+
 const CreateTask = () => {
   const [toggle, setToggle] = useState(false);
+  const [selected, setSelected] = useState<Date>();
+
   const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <div className="container space-y-5  py-2">
+      {JSON.stringify(selected)}
       <form className="space-y-6">
         <div>
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
@@ -150,6 +155,19 @@ const CreateTask = () => {
               </div>
             </div>
           </Card>
+        </div>
+        <div>
+          {/* <DayPicker
+            mode="single"
+            selected={selected}
+            onSelect={setSelected}
+            footer={
+              selected
+                ? `Selected: ${selected.toLocaleDateString()}`
+                : "Pick a day."
+            }
+          /> */}
+          <Calendar onSelect={setSelected} selected={selected} />
         </div>
         <div>
           <button className="primary-btn flex justify-between items-center text-2xl w-full">
