@@ -51,7 +51,7 @@ const AppLayout = () => {
             </span>
           </div>
         </Navbar>
-        <div className={`pt-[${navbarHeight}]`}>
+        <div style={{ paddingTop: `${navbarHeight}px` }}>
           <Outlet />
         </div>
         <MenuBar />
