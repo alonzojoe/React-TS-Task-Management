@@ -4,15 +4,23 @@ import { IoBagHandleSharp } from "react-icons/io5";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 import { useState } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
+import { MdDateRange } from "react-icons/md";
+import Modal from "../../components/UI/Modal";
 
 const CreateTask = () => {
   const [toggle, setToggle] = useState(false);
   const [selected, setSelected] = useState<Date>();
-
+  const showCalendar = false;
   const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <div className="container space-y-5  py-2">
-      {JSON.stringify(selected)}
+      {showCalendar && (
+        <Modal>
+          <div className="bg-white flex items-center justify-center rounded-2xl">
+            <Calendar onSelect={setSelected} selected={selected} />
+          </div>
+        </Modal>
+      )}
       <form className="space-y-6">
         <div>
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
@@ -46,7 +54,7 @@ const CreateTask = () => {
                 </div>
               </div>
               <div
-                className={`absolute rounded-lg bg-white w-full p-3 transition-all duration-300 ease-in-out opacity-1 scale-95 ${
+                className={`absolute rounded-lg bg-white border-[#F2F2F4] border-l border-r border-b w-full px-3 transition-all duration-300 ease-in-out opacity-1 scale-95 ${
                   toggle
                     ? "opacity-100 scale-100 visible"
                     : "opacity-0 scale-95 invisible"
@@ -114,33 +122,22 @@ const CreateTask = () => {
         </div>
         <div>
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div className="relative z-10">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="p-1 rounded-lg">
-                    <FaCalendarDays className="text-xl text-primary" />
-                  </span>
-                  <div>
-                    <span className="text-textSecondary font-semibold text-xs">
-                      Start Date
-                    </span>
-                    <h4 className="text-textPrimary text-md font-bold mt-0">
-                      Nov 27, 2024
-                    </h4>
-                  </div>
-                </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="p-1 rounded-lg">
+                  <FaCalendarDays className="text-xl text-primary" />
+                </span>
                 <div>
-                  <FaCaretDown className="text-textPrimary text-2xl" />
+                  <span className="text-textSecondary font-semibold text-xs">
+                    Start Date
+                  </span>
+                  <h4 className="text-textPrimary text-md font-bold mt-0">
+                    Nov 27, 2024
+                  </h4>
                 </div>
               </div>
-              <div
-                className={`absolute rounded-lg bg-white w-full p-3 transition-all duration-300 ease-in-out opacity-1 scale-95 ${
-                  toggle
-                    ? "opacity-100 scale-100 visible"
-                    : "opacity-0 scale-95 invisible"
-                }`}
-              >
-                <Calendar onSelect={setSelected} selected={selected} />
+              <div>
+                <MdDateRange className="text-textPrimary text-2xl" />
               </div>
             </div>
           </Card>
@@ -154,7 +151,7 @@ const CreateTask = () => {
                 </span>
                 <div>
                   <span className="text-textSecondary font-semibold text-xs">
-                    Date Created
+                    End Date
                   </span>
                   <h4 className="text-textPrimary text-md font-bold mt-0">
                     Nov 29, 2024
@@ -162,23 +159,10 @@ const CreateTask = () => {
                 </div>
               </div>
               <div>
-                <FaCaretDown className="text-textPrimary text-2xl" />
+                <MdDateRange className="text-textPrimary text-2xl" />
               </div>
             </div>
           </Card>
-        </div>
-        <div>
-          {/* <DayPicker
-            mode="single"
-            selected={selected}
-            onSelect={setSelected}
-            footer={
-              selected
-                ? `Selected: ${selected.toLocaleDateString()}`
-                : "Pick a day."
-            }
-          /> */}
-          {/* <Calendar onSelect={setSelected} selected={selected} /> */}
         </div>
         <div>
           <button className="primary-btn flex justify-between items-center text-2xl w-full">
