@@ -114,22 +114,33 @@ const CreateTask = () => {
         </div>
         <div>
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="p-1 rounded-lg">
-                  <FaCalendarDays className="text-xl text-primary" />
-                </span>
-                <div>
-                  <span className="text-textSecondary font-semibold text-xs">
-                    Start Date
+            <div className="relative z-10">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="p-1 rounded-lg">
+                    <FaCalendarDays className="text-xl text-primary" />
                   </span>
-                  <h4 className="text-textPrimary text-md font-bold mt-0">
-                    Nov 27, 2024
-                  </h4>
+                  <div>
+                    <span className="text-textSecondary font-semibold text-xs">
+                      Start Date
+                    </span>
+                    <h4 className="text-textPrimary text-md font-bold mt-0">
+                      Nov 27, 2024
+                    </h4>
+                  </div>
+                </div>
+                <div>
+                  <FaCaretDown className="text-textPrimary text-2xl" />
                 </div>
               </div>
-              <div>
-                <FaCaretDown className="text-textPrimary text-2xl" />
+              <div
+                className={`absolute rounded-lg bg-white w-full p-3 transition-all duration-300 ease-in-out opacity-1 scale-95 ${
+                  toggle
+                    ? "opacity-100 scale-100 visible"
+                    : "opacity-0 scale-95 invisible"
+                }`}
+              >
+                <Calendar onSelect={setSelected} selected={selected} />
               </div>
             </div>
           </Card>
@@ -167,7 +178,7 @@ const CreateTask = () => {
                 : "Pick a day."
             }
           /> */}
-          <Calendar onSelect={setSelected} selected={selected} />
+          {/* <Calendar onSelect={setSelected} selected={selected} /> */}
         </div>
         <div>
           <button className="primary-btn flex justify-between items-center text-2xl w-full">

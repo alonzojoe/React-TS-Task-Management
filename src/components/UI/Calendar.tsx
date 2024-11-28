@@ -15,10 +15,12 @@ const Calendar = ({ onSelect, selected }: CalendarProps) => {
       selected={selected}
       onSelect={onSelect}
       classNames={{
-        today: `border-primary`, // Add a border to today's date
-        selected: `bg-primary rounded-full text-white`, // Highlight the selected day
-        root: `${defaultClassNames.root} shadow-lg p-5`, // Add a shadow to the root element
-        chevron: `${defaultClassNames.chevron} fill-primary`, // Change the color of the chevron
+        today: `bg-lightPrimary rounded-full text-primary`,
+        selected: `bg-primary rounded-full text-white`,
+        root: `${defaultClassNames.root} p-3 text-sm rounded-2xl`,
+        chevron: `fill-primary font-bold`,
+        table: `w-full`,
+        day: `p-1`,
       }}
       footer={
         selected ? `Selected: ${selected.toLocaleDateString()}` : "Pick a day."
