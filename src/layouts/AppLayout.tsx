@@ -1,5 +1,6 @@
-import { ReactNode, useRef, forwardRef, useEffect, useState } from "react";
+import { ReactNode, useRef, forwardRef, useEffect, useState, JSX } from "react";
 import { useLocation, Outlet, Link, useNavigate } from "react-router-dom";
+import { FaBell } from "react-icons/fa";
 
 import { RiHomeFill } from "react-icons/ri";
 import { FaCalendarDays } from "react-icons/fa6";
@@ -9,8 +10,10 @@ import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
 
 import BackgroundImg from "../assets/images/background.png";
+import Avatar from "../assets/images/avatar.jpg";
 
 const AppLayout = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const [navbarHeight, setNavbarHeight] = useState(0);
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -29,6 +32,41 @@ const AppLayout = () => {
     };
   }, []);
 
+  const Header: JSX.Element = (
+    <div className="flex items-center justify-between text-2xl">
+      <span onClick={() => navigate(-1)}>
+        <PiArrowLeftFill className="text-3xl" />
+      </span>
+      <span className="font-semibold">Add Project</span>
+      <span>
+        <FaBell />
+      </span>
+    </div>
+  );
+
+  const Profile: JSX.Element = (
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <div>
+          <img
+            src={Avatar}
+            alt="avatar"
+            className="h-auto w-[40px] rounded-full"
+          />
+        </div>
+        <div>
+          <span className="text-textSecondary font-bold text-sm">Hello!</span>
+          <h4 className="text-textPrimary text-lg font-bold mb-0 !leading-none">
+            Joenell Alonzo
+          </h4>
+        </div>
+      </div>
+      <span>
+        <FaBell className="text-2xl" />
+      </span>
+    </div>
+  );
+
   return (
     <>
       <main
@@ -40,16 +78,8 @@ const AppLayout = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <Navbar ref={navbarRef}>
-          <div className="flex items-center justify-between text-2xl">
-            <span onClick={() => navigate(-1)}>
-              <PiArrowLeftFill className="text-3xl" />
-            </span>
-            <span className="font-semibold">Add Project</span>
-            <span>
-              <FaUser />
-            </span>
-          </div>
+        <Navbar path={pathname} ref={navbarRef}>
+          <>{pathname === "/home" ? Profile : Header}</>
         </Navbar>
         <div style={{ paddingTop: `${navbarHeight}px` }}>
           <Outlet />
@@ -61,26 +91,31 @@ const AppLayout = () => {
 };
 type NavbarProps = {
   children: ReactNode;
+  path: string;
 };
 
-const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className="fixed top-0 w-full py-5 px-6 shadow-md z-50"
-      style={{
-        backgroundSize: "cover",
-        backgroundColor: "white",
-        backgroundPosition: "center",
-        backgroundImage: `url(${BackgroundImg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundBlendMode: "overlay",
-      }}
-    >
-      {children}
-    </div>
-  );
-});
+const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
+  ({ children, path }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={`fixed top-0 w-full py-5 px-6 ${
+          path !== "/home" ? "shadow-md" : ""
+        } z-50`}
+        style={{
+          backgroundSize: "cover",
+          backgroundColor: "white",
+          backgroundPosition: "center",
+          backgroundImage: `url(${BackgroundImg})`,
+          backgroundRepeat: "no-repeat",
+          backgroundBlendMode: "overlay",
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 function MenuBar() {
   const activeClass = `text-bgActive shadow-indigo-700`;
