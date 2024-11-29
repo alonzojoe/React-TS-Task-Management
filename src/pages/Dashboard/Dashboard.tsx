@@ -46,13 +46,13 @@ const Dashboard = () => {
                 width="w-[250px]"
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="text-textSecondary text-md">Office Project</h4>
+                  <h4 className="text-textSecondary text-sm">Office Project</h4>
                   <span className="bg-lightPink p-1 rounded-lg">
                     <IoBagHandleSharp className="text-2xl text-darkPink" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-1">
-                  <h3 className="text-textPrimary text-xl font-semibold !leading-6 text-wrap">
+                <div className="flex items-center justify-between py-0">
+                  <h3 className="text-textPrimary text-md font-semibold !leading-6 text-wrap">
                     Grocery shopping app design
                   </h3>
                   <div></div>
@@ -64,13 +64,13 @@ const Dashboard = () => {
                 width="w-[250px]"
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="text-textSecondary text-md">Office Project</h4>
+                  <h4 className="text-textSecondary text-sm">Office Project</h4>
                   <span className="bg-lightPink p-1 rounded-lg">
                     <IoBagHandleSharp className="text-2xl text-darkPink" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-1">
-                  <h3 className="text-textPrimary text-xl font-semibold !leading-6 text-wrap">
+                <div className="flex items-center justify-between py-0">
+                  <h3 className="text-textPrimary text-md font-semibold !leading-6 text-wrap">
                     Grocery shopping app design
                   </h3>
                   <div></div>
@@ -82,13 +82,13 @@ const Dashboard = () => {
                 width="w-[250px]"
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="text-textSecondary text-md">Office Project</h4>
+                  <h4 className="text-textSecondary text-sm">Office Project</h4>
                   <span className="bg-lightPink p-1 rounded-lg">
                     <IoBagHandleSharp className="text-2xl text-darkPink" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-1">
-                  <h3 className="text-textPrimary text-xl font-semibold !leading-6 text-wrap">
+                <div className="flex items-center justify-between py-0">
+                  <h3 className="text-textPrimary text-md font-semibold !leading-6 text-wrap">
                     Grocery shopping app design
                   </h3>
                   <div></div>

@@ -4,7 +4,7 @@ import { FaBell } from "react-icons/fa";
 
 import { RiHomeFill } from "react-icons/ri";
 import { FaCalendarDays } from "react-icons/fa6";
-import { RiStickyNoteFill } from "react-icons/ri";
+import { IoIosListBox } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
@@ -51,12 +51,12 @@ const AppLayout = () => {
           <img
             src={Avatar}
             alt="avatar"
-            className="h-auto w-[40px] rounded-full"
+            className="h-auto w-[50px] rounded-full"
           />
         </div>
         <div>
-          <span className="text-textSecondary font-bold text-sm">Hello!</span>
-          <h4 className="text-textPrimary text-lg font-bold mb-0 !leading-none">
+          <span className="text-textSecondary font-bold text-md">Hello!</span>
+          <h4 className="text-textPrimary text-xl font-bold mb-0 !leading-none">
             Joenell Alonzo
           </h4>
         </div>
@@ -149,8 +149,8 @@ function MenuBar() {
           <FiPlus className="text-2xl text-white" />
         </Link>
         <span></span>
-        <span className="rotate-180 scale-x-[-1]">
-          <RiStickyNoteFill className={`text-2xl mx-2 text-bgInactive`} />
+        <span>
+          <IoIosListBox className={`text-2xl mx-2 text-bgInactive`} />
         </span>
         <span>
           <FaUser className={`text-2xl mx-2 text-bgInactive`} />
