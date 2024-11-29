@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { GoClockFill } from "react-icons/go";
 import { RiCalendarTodoFill } from "react-icons/ri";
-const Lists = () => {
+const TodayTasks = () => {
   return (
     <div className="container space-y-5  py-2">
       <div className="overflow-x-auto whitespace-nowrap py-4">
@@ -353,4 +353,4 @@ const Lists = () => {
   );
 };
 
-export default Lists;
+export default TodayTasks;

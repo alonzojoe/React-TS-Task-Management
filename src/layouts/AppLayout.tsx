@@ -152,9 +152,13 @@ function MenuBar() {
         <span>
           <IoIosListBox className={`text-2xl mx-2 text-bgInactive`} />
         </span>
-        <span>
-          <FaUser className={`text-2xl mx-2 text-bgInactive`} />
-        </span>
+        <Link to="/home/profile">
+          <FaUser
+            className={`text-2xl mx-2 ${
+              pathname === "/home/profile" ? activeClass : inactiveClass
+            }`}
+          />
+        </Link>
       </div>
     </section>
   );
