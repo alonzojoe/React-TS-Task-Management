@@ -2,22 +2,69 @@ import Card from "../../components/UI/Card";
 import Calendar from "../../components/UI/Calendar";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
+import { IoIosCloseCircle } from "react-icons/io";
 import Modal from "../../components/UI/Modal";
+import useToggle from "../../hooks/useToggle";
+import { FormData, DateSelection } from "../../types/Task";
+
+const initialState = {
+  category: "",
+  title: "",
+  description: "",
+  startDate: new Date(),
+  endDate: new Date(),
+};
 
 const CreateTask = () => {
+  const [formData, setFormData] = useState<FormData>(initialState);
   const [toggle, setToggle] = useState(false);
-  const [selected, setSelected] = useState<Date>();
-  const showCalendar = false;
+  const [isCalendarShow, toggleCalendar] = useToggle(false);
+  const [activeField, setActiveField] = useState<DateSelection>("startDate");
   const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const selectDate = (key: DateSelection, value: Date | undefined) => {
+    console.log(value);
+    if (value) {
+      setFormData((prev) => ({
+        ...prev,
+        [key]: value,
+      }));
+    }
+  };
+
   return (
     <div className="container space-y-5  py-2">
-      {showCalendar && (
+      {/* {JSON.stringify(formData)} */}
+      {isCalendarShow && (
         <Modal>
-          <div className="bg-white flex items-center justify-center rounded-2xl">
-            <Calendar onSelect={setSelected} selected={selected} />
+          <div className="bg-white flex flex-col justify-center rounded-2xl">
+            <div className="flex items-center justify-between pt-2 px-3">
+              <h4 className="text-md font-semibold text-textPrimary">
+                Select {activeField === "startDate" ? "Start Date" : "End Date"}
+              </h4>
+              <IoIosCloseCircle
+                className="text-darkPink text-4xl"
+                onClick={() => toggleCalendar()}
+              />
+            </div>
+            <Calendar
+              onSelect={(value) => selectDate(activeField, value)}
+              selected={formData.startDate}
+            />
           </div>
         </Modal>
       )}
@@ -95,9 +142,12 @@ const CreateTask = () => {
                 Project Name
               </label>
               <input
+                onChange={handleChange}
+                value={formData.title}
                 type="text"
                 className="py-1 text-textPrimary px-0 w-full font-semibold ring-0 border-0 outline-none placeholder:opacity-30"
                 id="title"
+                name="title"
                 placeholder="Enter Project Name"
               />
             </div>
@@ -113,8 +163,11 @@ const CreateTask = () => {
                 Description
               </label>
               <textarea
+                onChange={handleChange}
+                value={formData.description}
+                name="description"
                 className="py-3 text-textPrimary px-0 w-full text-sm font-semibold ring-0 border-0 outline-none placeholder:opacity-30 h-24"
-                id="title"
+                id="description"
                 placeholder="Enter Project Description"
               />
             </div>
@@ -137,7 +190,13 @@ const CreateTask = () => {
                 </div>
               </div>
               <div>
-                <MdDateRange className="text-textPrimary text-2xl" />
+                <MdDateRange
+                  className="text-textPrimary text-2xl"
+                  onClick={() => {
+                    setActiveField("startDate");
+                    toggleCalendar();
+                  }}
+                />
               </div>
             </div>
           </Card>
@@ -159,7 +218,13 @@ const CreateTask = () => {
                 </div>
               </div>
               <div>
-                <MdDateRange className="text-textPrimary text-2xl" />
+                <MdDateRange
+                  className="text-textPrimary text-2xl"
+                  onClick={() => {
+                    setActiveField("endDate");
+                    toggleCalendar();
+                  }}
+                />
               </div>
             </div>
           </Card>

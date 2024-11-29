@@ -1,12 +1,11 @@
-import React from "react";
 import { DayPicker, getDefaultClassNames } from "react-day-picker";
 import "react-day-picker/style.css";
 
 type CalendarProps = {
-  onSelect: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  onSelect: (value: Date | undefined) => void;
   selected: Date | undefined;
 };
-
+// React.Dispatch<React.SetStateAction<Date | undefined>>
 const Calendar = ({ onSelect, selected }: CalendarProps) => {
   const defaultClassNames = getDefaultClassNames();
   return (
