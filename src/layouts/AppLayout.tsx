@@ -149,9 +149,13 @@ function MenuBar() {
           <FiPlus className="text-2xl text-white" />
         </Link>
         <span></span>
-        <span>
-          <IoIosListBox className={`text-2xl mx-2 text-bgInactive`} />
-        </span>
+        <Link to="/home/task/lists">
+          <IoIosListBox
+            className={`text-2xl mx-2 ${
+              pathname === "/home/task/lists" ? activeClass : inactiveClass
+            }`}
+          />
+        </Link>
         <Link to="/home/profile">
           <FaUser
             className={`text-2xl mx-2 ${

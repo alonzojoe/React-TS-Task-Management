@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import CreateTask from "./pages/Tasks/CreateTask";
 import TodayTasks from "./pages/Tasks/TodayTasks";
 import Profile from "./pages/Profile/Profile";
+import TaskList from "./pages/Tasks/TaskList";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="task" element={<Outlet />}>
             <Route index element={<TodayTasks />} />
             <Route path="create" element={<CreateTask />} />
+            <Route path="lists" element={<TaskList />} />
           </Route>
           <Route path="Profile" element={<Profile />} />
         </Route>
