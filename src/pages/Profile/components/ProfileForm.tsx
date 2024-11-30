@@ -1,15 +1,39 @@
+import { useRef } from "react";
 import Card from "../../../components/UI/Card";
 import Avatar from "../../../assets/images/avatar.jpg";
 import { FaCamera } from "react-icons/fa";
+import useFileUpload from "../../../hooks/useFileUpload";
+import defaultAvatar from "../../../assets/images/default.png";
 
 const ProfileForm = () => {
+  const [selectedFile, previewImg, handleFileUpload] = useFileUpload();
+
+  const inputFileRef = useRef<HTMLInputElement | null>(null);
+
+  const selectFile = () => {
+    if (inputFileRef.current) {
+      inputFileRef.current!.click();
+    }
+  };
+
   return (
     <form className="space-y-6">
       <div className="flex items-center justify-center pt-5">
         <div className="relative">
-          <img src={Avatar} alt="" className="rounded-full h-auto w-[120px]" />
+          <img
+            src={previewImg ?? defaultAvatar}
+            alt="profile-picture"
+            className="rounded-full h-[120px] w-[120px] object-cover border-2 border-white"
+          />
           <div className="absolute top-20 -right-2 rounded-full h-[40px] w-[40px] border-white border-2  bg-gray-400 flex items-center justify-center">
-            <FaCamera className="text-lg text-white" />
+            <FaCamera className="text-lg text-white" onClick={selectFile} />
+            <input
+              className="hidden"
+              type="file"
+              ref={inputFileRef}
+              onChange={handleFileUpload}
+              accept=".jpg, .jpeg, .png"
+            />
           </div>
         </div>
       </div>
