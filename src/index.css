@@ -8,7 +8,7 @@
   }
 
   .secondary-btn {
-    @apply inline-block bg-lightPrimary text-primary px-8 rounded-xl font-semibold hover:bg-white duration-200;
+    @apply inline-block bg-lightPrimary text-primary rounded-xl font-bold hover:bg-white duration-200;
   }
 
   .sm-btn {

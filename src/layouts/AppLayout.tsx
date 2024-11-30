@@ -8,7 +8,7 @@ import { IoIosListBox } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
-
+import { IoIosSave } from "react-icons/io";
 import BackgroundImg from "../assets/images/background.png";
 import Avatar from "../assets/images/avatar.jpg";
 
@@ -26,11 +26,11 @@ const AppLayout = () => {
     };
     getNavbarHeight();
     window.addEventListener("resize", getNavbarHeight);
-
+    console.log("useEffect runs");
     return () => {
       window.removeEventListener("resize", getNavbarHeight);
     };
-  }, []);
+  }, [pathname]);
 
   const Header: JSX.Element = (
     <div className="flex items-center justify-between text-2xl">
@@ -146,7 +146,7 @@ function MenuBar() {
           to="/home/task/create"
           className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
         >
-          <FiPlus className="text-2xl text-white" />
+          <IoIosSave className="text-2xl text-white" />
         </Link>
         <span></span>
         <Link to="/home/task/lists">
