@@ -53,7 +53,7 @@ const ProfileForm = () => {
       </div>
       <button className="primary-btn flex justify-between items-center text-2xl w-full">
         <span></span>
-        <span>Update Profile</span>
+        <span>Save Profile</span>
         <span></span>
       </button>
     </form>
