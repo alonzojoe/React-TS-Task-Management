@@ -1,7 +1,7 @@
 import CircularProgressBar from "../../../components/UI/CircularProgressBar";
 import Card from "../../../components/UI/Card";
 import { Category } from "../../../types/Categories";
-import { FaCaretUp } from "react-icons/fa6";
+// import { FaCaretUp } from "react-icons/fa6";
 
 type TaskGroupProps = {
   category: Category;
