@@ -12,6 +12,18 @@ import { IoIosSave } from "react-icons/io";
 import BackgroundImg from "../assets/images/background.png";
 import Avatar from "../assets/images/avatar.jpg";
 
+const APPTITLE: {
+  id: number;
+  title: string;
+  path: string;
+}[] = [
+  { id: 1, title: "Add Project", path: "/home/task/create" },
+  { id: 2, title: "Today's Tasks", path: "/home/task" },
+  { id: 3, title: "Task List", path: "/home/task/lists" },
+  { id: 4, title: "Profile", path: "/home/profile" },
+  { id: 5, title: "Dashboard", path: "/home" },
+];
+
 const AppLayout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -32,12 +44,14 @@ const AppLayout = () => {
     };
   }, [pathname]);
 
+  const title = APPTITLE.find((item) => item.path === pathname)!.title ?? "";
+
   const Header: JSX.Element = (
     <div className="flex items-center justify-between text-2xl">
       <span onClick={() => navigate(-1)}>
         <PiArrowLeftFill className="text-3xl" />
       </span>
-      <span className="font-semibold">Add Project</span>
+      <span className="font-bold text-textPrimary">{title}</span>
       <span>
         <FaBell />
       </span>
@@ -146,7 +160,7 @@ function MenuBar() {
           to="/home/task/create"
           className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
         >
-          <IoIosSave className="text-2xl text-white" />
+          <FiPlus className="text-2xl text-white" />
         </Link>
         <span></span>
         <Link to="/home/task/lists">
