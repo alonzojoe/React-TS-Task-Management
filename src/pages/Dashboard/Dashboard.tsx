@@ -2,7 +2,7 @@ import Card from "../../components/UI/Card";
 import CircularProgressBar from "../../components/UI/CircularProgressBar";
 import TaskGroup from "./components/TaskGroup";
 import { IoBagHandleSharp } from "react-icons/io5";
-import { CATEGORIES } from "../../constants/categories";
+import { CATEGORIES } from "../../constants/global";
 
 const Dashboard = () => {
   return (

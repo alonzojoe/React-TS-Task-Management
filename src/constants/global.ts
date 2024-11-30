@@ -1,8 +1,12 @@
 
 import { Category } from "../types/Categories";
+import { Status } from "../types/Task";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { TbUserPentagon } from "react-icons/tb";
 import { MdOutlineMenuBook } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
+import { GoClockFill } from "react-icons/go";
+import { RiCalendarTodoFill } from "react-icons/ri";
 
 export const CATEGORIES: Category[] = [
     {
@@ -32,4 +36,28 @@ export const CATEGORIES: Category[] = [
         color: '#FF7D53',
         bgColor: '#FFE9E1'
     },
+]
+
+export const status: Status[] = [
+    {
+        id: 1,
+        name: 'To-do',
+        icon: RiCalendarTodoFill,
+        classColor: 'text-darkBlue',
+        classBgColor: 'bg-lightBlue',
+    },
+    {
+        id: 2,
+        name: 'In Progress',
+        icon: GoClockFill,
+        classColor: 'text-darkOrange',
+        classBgColor: 'bg-lightOrange',
+    },
+    {
+        id: 3,
+        name: 'Done',
+        icon: FaCheckCircle,
+        classColor: 'text-primary',
+        classBgColor: 'bg-lightPrimary',
+    }
 ]
