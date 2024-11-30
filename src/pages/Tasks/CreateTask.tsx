@@ -1,7 +1,5 @@
 import Card from "../../components/UI/Card";
 import Calendar from "../../components/UI/Calendar";
-import { IoBagHandleSharp } from "react-icons/io5";
-import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 import { useState, ChangeEvent } from "react";
 import { FaCalendarDays } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
@@ -9,13 +7,18 @@ import { IoIosCloseCircle } from "react-icons/io";
 import Modal from "../../components/UI/Modal";
 import useToggle from "../../hooks/useToggle";
 import { FormData, DateSelection } from "../../types/Task";
+import FormSelect from "../../components/Form/FormSelect";
+import { OptionBased } from "../../types/Task";
+
+import { CATEGORIES, STATUS } from "../../constants/global";
 
 const initialState = {
-  category: "",
+  category: 1,
   title: "",
   description: "",
   startDate: new Date(),
   endDate: new Date(),
+  status: 1,
 };
 
 const CreateTask = () => {
@@ -46,6 +49,14 @@ const CreateTask = () => {
     }
   };
 
+  const selectOption = (alias: string, value: OptionBased) => {
+    console.log("selectedCategory", value);
+    setFormData((prev) => ({
+      ...prev,
+      [alias]: value.id,
+    }));
+  };
+
   return (
     <div className="container space-y-5  py-2">
       {/* {JSON.stringify(formData)} */}
@@ -70,6 +81,20 @@ const CreateTask = () => {
       )}
       <form className="space-y-6">
         <div>
+          <FormSelect
+            alias="category"
+            name="Task Group"
+            options={CATEGORIES}
+            getOptionLabel={(category) => category.name}
+            getOptionValue={(category) => category.id}
+            classColor={(category) => category.classColor}
+            classBgColor={(category) => category.classBgColor}
+            getOptionIcon={(category) => category.icon}
+            value={formData.category}
+            onChange={selectOption}
+          />
+        </div>
+        {/* <div>
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
             <div className="relative z-10">
               <div className="flex items-center justify-between">
@@ -131,7 +156,7 @@ const CreateTask = () => {
               </div>
             </div>
           </Card>
-        </div>
+        </div> */}
         <div>
           <Card background="cardBg" shrink="shrink-0" width="w-[full]">
             <div>
@@ -230,11 +255,23 @@ const CreateTask = () => {
           </Card>
         </div>
         <div>
-          <button className="primary-btn flex justify-between items-center text-2xl w-full">
+          {/* <button className="primary-btn flex justify-between items-center text-2xl w-full">
             <span></span>
             <span>Create Project</span>
             <span></span>
-          </button>
+          </button> */}
+          <FormSelect
+            alias="status"
+            name="Status"
+            options={STATUS}
+            getOptionLabel={(status) => status.name}
+            getOptionValue={(status) => status.id}
+            classColor={(status) => status.classColor}
+            classBgColor={(status) => status.classBgColor}
+            getOptionIcon={(status) => status.icon}
+            value={formData.status}
+            onChange={selectOption}
+          />
         </div>
       </form>
     </div>

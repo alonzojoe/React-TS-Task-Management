@@ -38,7 +38,7 @@ export const CATEGORIES: Category[] = [
     },
 ]
 
-export const status: Status[] = [
+export const STATUS: Status[] = [
     {
         id: 1,
         name: 'To-do',
