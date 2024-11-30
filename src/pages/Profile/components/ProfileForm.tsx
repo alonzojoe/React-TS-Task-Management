@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Card from "../../../components/UI/Card";
-import Avatar from "../../../assets/images/avatar.jpg";
+// import Avatar from "../../../assets/images/avatar.jpg";
 import { FaCamera } from "react-icons/fa";
 import useFileUpload from "../../../hooks/useFileUpload";
 import defaultAvatar from "../../../assets/images/default.png";
@@ -15,6 +15,8 @@ const ProfileForm = () => {
       inputFileRef.current!.click();
     }
   };
+
+  console.log(selectedFile);
 
   return (
     <form className="space-y-6">

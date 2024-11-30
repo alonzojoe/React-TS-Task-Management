@@ -1,8 +1,6 @@
 import Card from "../../components/UI/Card";
 import Calendar from "../../components/UI/Calendar";
 import { useState, ChangeEvent } from "react";
-import { FaCalendarDays } from "react-icons/fa6";
-import { MdDateRange } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 import Modal from "../../components/UI/Modal";
 import useToggle from "../../hooks/useToggle";
@@ -74,7 +72,11 @@ const CreateTask = () => {
             </div>
             <Calendar
               onSelect={(value) => selectDate(activeField, value)}
-              selected={formData.startDate}
+              selected={
+                activeField === "startDate"
+                  ? formData.startDate
+                  : formData.endDate
+              }
             />
           </div>
         </Modal>

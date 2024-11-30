@@ -1,8 +1,8 @@
 import BannerImg from "../../assets/images/home.png";
 import Background from "../../assets/images/background.png";
 import { PiArrowRightFill } from "react-icons/pi";
-import { useNavigate } from "react-router-dom";
-import useToggle from '../../hooks/useToggle'
+// import { useNavigate } from "react-router-dom";
+import useToggle from "../../hooks/useToggle";
 import Modal from "../../components/UI/Modal";
 import ProfileForm from "./../Profile/components/ProfileForm";
 
