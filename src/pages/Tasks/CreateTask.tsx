@@ -8,6 +8,7 @@ import Modal from "../../components/UI/Modal";
 import useToggle from "../../hooks/useToggle";
 import { FormData, DateSelection } from "../../types/Task";
 import FormSelect from "../../components/Form/FormSelect";
+import FormDate from "../../components/Form/FormDate";
 import { OptionBased } from "../../types/Task";
 
 import { CATEGORIES, STATUS } from "../../constants/global";
@@ -23,10 +24,8 @@ const initialState = {
 
 const CreateTask = () => {
   const [formData, setFormData] = useState<FormData>(initialState);
-  const [toggle, setToggle] = useState(false);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");
-  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -47,6 +46,7 @@ const CreateTask = () => {
         [key]: value,
       }));
     }
+    toggleCalendar();
   };
 
   const selectOption = (alias: string, value: OptionBased) => {
@@ -199,60 +199,22 @@ const CreateTask = () => {
           </Card>
         </div>
         <div>
-          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="p-1 rounded-lg">
-                  <FaCalendarDays className="text-xl text-primary" />
-                </span>
-                <div>
-                  <span className="text-textSecondary font-semibold text-xs">
-                    Start Date
-                  </span>
-                  <h4 className="text-textPrimary text-md font-bold mt-0">
-                    Nov 27, 2024
-                  </h4>
-                </div>
-              </div>
-              <div>
-                <MdDateRange
-                  className="text-textPrimary text-2xl"
-                  onClick={() => {
-                    setActiveField("startDate");
-                    toggleCalendar();
-                  }}
-                />
-              </div>
-            </div>
-          </Card>
+          <FormDate
+            alias="startDate"
+            title="Start Date"
+            label="Nov 27, 2024"
+            onActiveField={setActiveField}
+            onToggleField={toggleCalendar}
+          />
         </div>
         <div>
-          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="p-1 rounded-lg">
-                  <FaCalendarDays className="text-xl text-primary" />
-                </span>
-                <div>
-                  <span className="text-textSecondary font-semibold text-xs">
-                    End Date
-                  </span>
-                  <h4 className="text-textPrimary text-md font-bold mt-0">
-                    Nov 29, 2024
-                  </h4>
-                </div>
-              </div>
-              <div>
-                <MdDateRange
-                  className="text-textPrimary text-2xl"
-                  onClick={() => {
-                    setActiveField("endDate");
-                    toggleCalendar();
-                  }}
-                />
-              </div>
-            </div>
-          </Card>
+          <FormDate
+            alias="endDate"
+            title="End Date"
+            label="Nov 27, 2024"
+            onActiveField={setActiveField}
+            onToggleField={toggleCalendar}
+          />
         </div>
         <div>
           {/* <button className="primary-btn flex justify-between items-center text-2xl w-full">
