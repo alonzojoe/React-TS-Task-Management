@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import FormInput from "../../../components/Form/FormInput";
 import Card from "../../../components/UI/Card";
 // import Avatar from "../../../assets/images/avatar.jpg";
 import { FaCamera } from "react-icons/fa";
@@ -40,42 +41,20 @@ const ProfileForm = () => {
         </div>
       </div>
       <div>
-        <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-          <div>
-            <label
-              htmlFor="title"
-              className="text-textSecondary font-semibold text-xs block"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              className="py-1 text-textPrimary px-0 w-full font-semibold ring-0 border-0 outline-none placeholder:opacity-30"
-              id="firstname"
-              name="firstname"
-              placeholder="Enter First Name"
-            />
-          </div>
-        </Card>
+        <FormInput
+          label="First Name"
+          id="firstname"
+          name="firstname"
+          placeholder="Enter First Name"
+        />
       </div>
       <div>
-        <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-          <div>
-            <label
-              htmlFor="title"
-              className="text-textSecondary font-semibold text-xs block"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              className="py-1 text-textPrimary px-0 w-full font-semibold ring-0 border-0 outline-none placeholder:opacity-30"
-              id="lastname"
-              name="lastname"
-              placeholder="Enter Last Name"
-            />
-          </div>
-        </Card>
+        <FormInput
+          label="Last Name"
+          id="lastname"
+          name="lastname"
+          placeholder="Enter Last Name"
+        />
       </div>
       <button className="primary-btn flex justify-between items-center text-2xl w-full">
         <span></span>
