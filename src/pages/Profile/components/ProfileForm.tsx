@@ -1,6 +1,5 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 import FormInput from "../../../components/Form/FormInput";
-import Card from "../../../components/UI/Card";
 // import Avatar from "../../../assets/images/avatar.jpg";
 import { FaCamera } from "react-icons/fa";
 import useFileUpload from "../../../hooks/useFileUpload";
@@ -8,8 +7,9 @@ import defaultAvatar from "../../../assets/images/default.png";
 
 const ProfileForm = () => {
   const [selectedFile, previewImg, handleFileUpload] = useFileUpload();
-
   const inputFileRef = useRef<HTMLInputElement | null>(null);
+  const firstNameRef = useRef<HTMLInputElement | null>(null);
+  const lastNameRef = useRef<HTMLInputElement | null>(null);
 
   const selectFile = () => {
     if (inputFileRef.current) {
@@ -19,8 +19,18 @@ const ProfileForm = () => {
 
   console.log(selectedFile);
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert("form submitted");
+    console.log({
+      firstName: firstNameRef.current?.value,
+      lastName: lastNameRef.current?.value,
+      selectedFile: selectedFile,
+    });
+  };
+
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       <div className="flex items-center justify-center pt-5">
         <div className="relative">
           <img
@@ -42,6 +52,7 @@ const ProfileForm = () => {
       </div>
       <div>
         <FormInput
+          ref={firstNameRef}
           label="First Name"
           id="firstname"
           name="firstname"
@@ -50,13 +61,17 @@ const ProfileForm = () => {
       </div>
       <div>
         <FormInput
+          ref={lastNameRef}
           label="Last Name"
           id="lastname"
           name="lastname"
           placeholder="Enter Last Name"
         />
       </div>
-      <button className="primary-btn flex justify-between items-center text-2xl w-full">
+      <button
+        type="submit"
+        className="primary-btn flex justify-between items-center text-2xl w-full"
+      >
         <span></span>
         <span>Save Profile</span>
         <span></span>
