@@ -4,8 +4,13 @@ import FormInput from "../../../components/Form/FormInput";
 import { FaCamera } from "react-icons/fa";
 import useFileUpload from "../../../hooks/useFileUpload";
 import defaultAvatar from "../../../assets/images/default.png";
+import { type Profile } from "../../../types/Profile";
 
-const ProfileForm = () => {
+type ProfileFormProps = {
+  onAdd: (data: Profile) => void;
+};
+
+const ProfileForm = ({ onAdd }: ProfileFormProps) => {
   const [selectedFile, previewImg, handleFileUpload] = useFileUpload();
   const inputFileRef = useRef<HTMLInputElement | null>(null);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
@@ -17,15 +22,18 @@ const ProfileForm = () => {
     }
   };
 
-  console.log(selectedFile);
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    console.log("selected file", selectedFile);
     e.preventDefault();
-    alert("form submitted");
-    console.log({
-      firstName: firstNameRef.current?.value,
-      lastName: lastNameRef.current?.value,
-      selectedFile: selectedFile,
+    if (
+      firstNameRef.current!.value.trim() === "" &&
+      lastNameRef.current!.value.trim() === ""
+    )
+      return;
+    onAdd({
+      lastName: firstNameRef.current!.value,
+      firstName: lastNameRef.current!.value,
+      photo: selectedFile ? selectedFile : null,
     });
   };
 

@@ -1,5 +1,5 @@
 export type Profile = {
     lastName: string;
     firstName: string;
-    photo: string;
+    photo: File | null | string;
 }

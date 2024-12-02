@@ -8,13 +8,15 @@ import Modal from "../../components/UI/Modal";
 import ProfileForm from "./../Profile/components/ProfileForm";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { type Profile } from "../../types/Profile";
+import axios, { AxiosError } from "axios";
 
-const DEFAULT_PROFILE = {
-  lastName: "Joenell",
-  firstName: "Alonzo",
-  photo:
-    "https://avatars.githubusercontent.com/u/72643848?s=400&u=87b13364095f47cbe450e0c86f97eebd78edb6d9&v=4",
-};
+const DEFAULT_PROFILE = null;
+// {
+//   lastName: "Joenell",
+//   firstName: "Alonzo",
+//   photo:
+//     "https://avatars.githubusercontent.com/u/72643848?s=400&u=87b13364095f47cbe450e0c86f97eebd78edb6d9&v=4",
+// };
 
 const Home = () => {
   const [showModal, toggleShowModal] = useToggle(false);
@@ -26,6 +28,57 @@ const Home = () => {
   console.log("profile", profile);
 
   if (profile) return <Navigate to="/home" />;
+
+  const handleUpload = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "default-preset");
+
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_CLOUDINARY_UPLOAD_URL,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.data?.secure_url) {
+        console.log("cloudinary response:", response.data.secure_url);
+        return response.data.secure_url;
+      }
+      throw new Error("Missing secure_url in Cloudinary response");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(
+          `An error occurred while uploading the file: ${error.message}`
+        );
+      } else {
+        console.error("Unexpected error:", error);
+        throw new Error("An unexpected error occurred during file upload");
+      }
+    }
+  };
+  const handleCreateProfile = async (data: Profile) => {
+    const selectedPhoto = data.photo;
+    let photoUrl: string | null = null;
+
+    if (selectedPhoto && selectedPhoto instanceof File) {
+      try {
+        photoUrl = await handleUpload(selectedPhoto);
+      } catch (error) {
+        console.error("Error uploading photo:", error);
+      }
+    }
+
+    setProfile({
+      ...data,
+      photo: photoUrl,
+    });
+  };
+
   return (
     <>
       {showModal && (
@@ -35,7 +88,7 @@ const Home = () => {
               <h2 className="text-textPrimary font-bold text-2xl py-2 text-center">
                 Create Profile
               </h2>
-              <ProfileForm />
+              <ProfileForm onAdd={handleCreateProfile} />
             </div>
           </div>
         </Modal>
