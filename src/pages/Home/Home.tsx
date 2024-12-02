@@ -8,7 +8,8 @@ import Modal from "../../components/UI/Modal";
 import ProfileForm from "./../Profile/components/ProfileForm";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { type Profile } from "../../types/Profile";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const DEFAULT_PROFILE = null;
 // {
@@ -19,6 +20,7 @@ const DEFAULT_PROFILE = null;
 // };
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useToggle(false);
   const [showModal, toggleShowModal] = useToggle(false);
   const [profile, setProfile] = useLocalStorage<Profile | null>(
     "T_PROFILE",
@@ -62,6 +64,7 @@ const Home = () => {
     }
   };
   const handleCreateProfile = async (data: Profile) => {
+    setIsLoading(true);
     const selectedPhoto = data.photo;
     let photoUrl: string | null = null;
 
@@ -77,6 +80,8 @@ const Home = () => {
       ...data,
       photo: photoUrl,
     });
+    setIsLoading(false);
+    toast.success("Profile created successfully!");
   };
 
   return (
@@ -88,7 +93,7 @@ const Home = () => {
               <h2 className="text-textPrimary font-bold text-2xl py-2 text-center">
                 Create Profile
               </h2>
-              <ProfileForm onAdd={handleCreateProfile} />
+              <ProfileForm onSave={handleCreateProfile} isLoading={isLoading} />
             </div>
           </div>
         </Modal>
