@@ -27,6 +27,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           <input
             ref={ref}
             type="text"
+            maxLength={50}
             className={`py-1 text-textPrimary text-lg px-0 w-full font-semibold ring-0 border-0 outline-none placeholder:opacity-30 ${invalidClass.inputBorder}`}
             {...rest}
           />

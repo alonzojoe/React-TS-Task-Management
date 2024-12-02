@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import BannerImg from "../../assets/images/home.png";
 import Background from "../../assets/images/background.png";
 import { PiArrowRightFill } from "react-icons/pi";
@@ -5,11 +6,26 @@ import { PiArrowRightFill } from "react-icons/pi";
 import useToggle from "../../hooks/useToggle";
 import Modal from "../../components/UI/Modal";
 import ProfileForm from "./../Profile/components/ProfileForm";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { type Profile } from "../../types/Profile";
+
+const DEFAULT_PROFILE = {
+  lastName: "Joenell",
+  firstName: "Alonzo",
+  photo:
+    "https://avatars.githubusercontent.com/u/72643848?s=400&u=87b13364095f47cbe450e0c86f97eebd78edb6d9&v=4",
+};
 
 const Home = () => {
   const [showModal, toggleShowModal] = useToggle(false);
-  // const navigate = useNavigate();
+  const [profile, setProfile] = useLocalStorage<Profile | null>(
+    "T_PROFILE",
+    DEFAULT_PROFILE
+  );
 
+  console.log("profile", profile);
+
+  if (profile) return <Navigate to="/home" />;
   return (
     <>
       {showModal && (

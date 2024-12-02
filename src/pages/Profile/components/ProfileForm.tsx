@@ -57,6 +57,7 @@ const ProfileForm = () => {
           id="firstname"
           name="firstname"
           placeholder="Enter First Name"
+          invalid={true}
         />
       </div>
       <div>
@@ -66,6 +67,7 @@ const ProfileForm = () => {
           id="lastname"
           name="lastname"
           placeholder="Enter Last Name"
+          invalid={true}
         />
       </div>
       <button
