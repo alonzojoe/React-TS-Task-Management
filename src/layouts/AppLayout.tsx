@@ -1,7 +1,12 @@
 import { ReactNode, useRef, forwardRef, useEffect, useState, JSX } from "react";
-import { useLocation, Outlet, Link, useNavigate } from "react-router-dom";
+import {
+  useLocation,
+  Outlet,
+  Link,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import { FaBell } from "react-icons/fa";
-
 import { RiHomeFill } from "react-icons/ri";
 import { FaCalendarDays } from "react-icons/fa6";
 import { IoIosListBox } from "react-icons/io";
@@ -10,7 +15,9 @@ import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
 // import { IoIosSave } from "react-icons/io";
 import BackgroundImg from "../assets/images/background.png";
-import Avatar from "../assets/images/avatar.jpg";
+import DefaultAvatar from "../assets/images/default.png";
+import { type Profile } from "../types/Profile";
+import { getLocalStorageItem } from "../libs/utils";
 
 const APPTITLE: {
   id: number;
@@ -29,6 +36,7 @@ const AppLayout = () => {
   const navigate = useNavigate();
   const [navbarHeight, setNavbarHeight] = useState(0);
   const navbarRef = useRef<HTMLDivElement>(null);
+  const storedProfile = getLocalStorageItem<Profile>("T_PROFILE");
 
   useEffect(() => {
     const getNavbarHeight = () => {
@@ -57,13 +65,19 @@ const AppLayout = () => {
       </span>
     </div>
   );
+  if (!storedProfile) return <Navigate to="/" />;
+  const fullName = `${storedProfile.firstName} ${storedProfile.lastName}`;
+  const storedImage =
+    typeof storedProfile.photo === "string"
+      ? storedProfile.photo
+      : DefaultAvatar;
 
   const Profile: JSX.Element = (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-4">
         <div>
           <img
-            src={Avatar}
+            src={storedImage}
             alt="avatar"
             className="h-auto w-[50px] rounded-full"
           />
@@ -71,7 +85,7 @@ const AppLayout = () => {
         <div>
           <span className="text-textSecondary font-bold text-md">Hello!</span>
           <h4 className="text-textPrimary text-xl font-bold mb-0 !leading-none">
-            Joenell Alonzo
+            {fullName}
           </h4>
         </div>
       </div>

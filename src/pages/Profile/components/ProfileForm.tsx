@@ -31,8 +31,8 @@ const ProfileForm = ({ onAdd }: ProfileFormProps) => {
     )
       return;
     onAdd({
-      lastName: firstNameRef.current!.value,
-      firstName: lastNameRef.current!.value,
+      lastName: lastNameRef.current!.value,
+      firstName: firstNameRef.current!.value,
       photo: selectedFile ? selectedFile : null,
     });
   };
