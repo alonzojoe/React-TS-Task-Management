@@ -18,6 +18,7 @@ import BackgroundImg from "../assets/images/background.png";
 import DefaultAvatar from "../assets/images/default.png";
 import { type Profile } from "../types/Profile";
 import { getLocalStorageItem } from "../libs/utils";
+import useTask from "../store/tasks-context";
 
 const APPTITLE: {
   id: number;
@@ -146,12 +147,19 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 );
 
 function MenuBar({ onSave }: { onSave: (data: any) => void }) {
+  const { addTask, payload } = useTask();
   const activeClass = `text-bgActive shadow-indigo-700`;
   const inactiveClass = `text-bgInactive`;
 
   const { pathname } = useLocation();
 
   console.log("loc", pathname);
+
+  const handleSave = () => {
+    console.log("payload", payload);
+    if (!payload) return;
+    addTask(payload);
+  };
 
   return (
     <section className="fixed bottom-0 w-full bg-[#EEE9FF] py-5 px-10 rounded-3xl">
@@ -180,7 +188,7 @@ function MenuBar({ onSave }: { onSave: (data: any) => void }) {
           </Link>
         ) : (
           <span
-            onClick={() => onSave(1)}
+            onClick={handleSave}
             className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
           >
             <IoIosSave className="text-2xl text-white" />

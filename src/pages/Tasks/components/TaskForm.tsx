@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, useEffect } from "react";
 import useToggle from "../../../hooks/useToggle";
 import FormSelect from "../../../components/Form/FormSelect";
 import FormInput from "../../../components/Form/FormInput";
@@ -13,6 +13,7 @@ import {
   type OptionBased,
   type DateSelection,
 } from "../../../types/Task";
+import useTask from "../../../store/tasks-context";
 
 const initialState = {
   category: 1,
@@ -32,6 +33,11 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");
+  const { setPayload } = useTask();
+
+  useEffect(() => {
+    setPayload(formData);
+  }, [formData, setPayload]);
 
   const selectOption = (alias: string, value: OptionBased) => {
     console.log("selectedCategory", value);
