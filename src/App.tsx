@@ -16,6 +16,10 @@ import ProtectedRoutes from "./libs/guard/ProtectedRoutes";
 import { Toaster } from "react-hot-toast";
 
 function App() {
+  const saveData = (data: any) => {
+    console.log("fomr sbumitted", data);
+  };
+
   return (
     <>
       <Toaster />
@@ -23,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/home" element={<AppLayout />}>
+            <Route path="/home" element={<AppLayout onSave={saveData} />}>
               <Route index element={<Dashboard />} />
               <Route path="task" element={<Outlet />}>
                 <Route index element={<TodayTasks />} />

@@ -31,7 +31,7 @@ const APPTITLE: {
   { id: 5, title: "Dashboard", path: "/home" },
 ];
 
-const AppLayout = () => {
+const AppLayout = ({ onSave }: { onSave: (data: any) => void }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [navbarHeight, setNavbarHeight] = useState(0);
@@ -112,7 +112,7 @@ const AppLayout = () => {
         <div style={{ paddingTop: `${navbarHeight}px` }}>
           <Outlet />
         </div>
-        <MenuBar />
+        <MenuBar onSave={onSave} />
       </main>
     </>
   );
@@ -145,7 +145,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
   }
 );
 
-function MenuBar() {
+function MenuBar({ onSave }: { onSave: (data: any) => void }) {
   const activeClass = `text-bgActive shadow-indigo-700`;
   const inactiveClass = `text-bgInactive`;
 
@@ -179,7 +179,10 @@ function MenuBar() {
             <FiPlus className="text-2xl text-white" />
           </Link>
         ) : (
-          <span className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center">
+          <span
+            onClick={() => onSave(1)}
+            className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
+          >
             <IoIosSave className="text-2xl text-white" />
           </span>
         )}

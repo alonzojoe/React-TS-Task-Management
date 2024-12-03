@@ -88,7 +88,6 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
         </Modal>
       )}
       <form className="space-y-6">
-        {JSON.stringify(formData)}
         <div>
           <FormSelect
             alias="status"

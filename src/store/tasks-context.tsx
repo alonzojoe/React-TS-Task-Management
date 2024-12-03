@@ -6,11 +6,15 @@ import { v4 as uuidV4 } from "uuid";
 type TasksContextType = {
   tasks: Task[] | null;
   addTask: (data: FormData) => void;
+  setPayload: <T>(data: FormData) => T;
 };
 
 const TasksContext = createContext<TasksContextType>({
   tasks: null,
   addTask: () => {},
+  setPayload: <T,>(): T => {
+    throw new Error("setPayload function must be implemented in the provider.");
+  },
 });
 
 type TasksContextProviderProps = {
@@ -31,9 +35,15 @@ export const TasksContextProvider = ({
     setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
   };
 
+  const setPayload = <T,>(data: FormData): T => {
+    console.log("Payload set:", data);
+    return data as T;
+  };
+
   const value = {
     tasks,
     addTask,
+    setPayload,
   };
 
   return (
