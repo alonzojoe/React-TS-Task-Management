@@ -13,7 +13,7 @@ import { IoIosListBox } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { PiArrowLeftFill } from "react-icons/pi";
-// import { IoIosSave } from "react-icons/io";
+import { IoIosSave } from "react-icons/io";
 import BackgroundImg from "../assets/images/background.png";
 import DefaultAvatar from "../assets/images/default.png";
 import { type Profile } from "../types/Profile";
@@ -170,12 +170,19 @@ function MenuBar() {
             }`}
           />
         </Link>
-        <Link
-          to="/home/task/create"
-          className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
-        >
-          <FiPlus className="text-2xl text-white" />
-        </Link>
+        <span></span>
+        {pathname !== "/home/task/create" ? (
+          <Link
+            to="/home/task/create"
+            className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
+          >
+            <FiPlus className="text-2xl text-white" />
+          </Link>
+        ) : (
+          <span className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center">
+            <IoIosSave className="text-2xl text-white" />
+          </span>
+        )}
         <span></span>
         <Link to="/home/task/lists">
           <IoIosListBox

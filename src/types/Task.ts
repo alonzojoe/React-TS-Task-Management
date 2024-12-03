@@ -8,6 +8,10 @@ export type FormData = {
     status: number;
 }
 
+export type Task = FormData & {
+    id: string;
+}
+
 export type DateSelection = 'startDate' | 'endDate'
 
 export type Status = {
