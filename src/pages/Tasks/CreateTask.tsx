@@ -8,6 +8,8 @@ import { FormData, DateSelection } from "../../types/Task";
 import FormSelect from "../../components/Form/FormSelect";
 import FormDate from "../../components/Form/FormDate";
 import { OptionBased } from "../../types/Task";
+import FormInput from "../../components/Form/FormInput";
+import FormText from "../../components/Form/FormText";
 
 import { CATEGORIES, STATUS } from "../../constants/global";
 
@@ -84,6 +86,20 @@ const CreateTask = () => {
       <form className="space-y-6">
         <div>
           <FormSelect
+            alias="status"
+            name="Status"
+            options={STATUS}
+            getOptionLabel={(status) => status.name}
+            getOptionValue={(status) => status.id}
+            classColor={(status) => status.classColor}
+            classBgColor={(status) => status.classBgColor}
+            getOptionIcon={(status) => status.icon}
+            value={formData.status}
+            onChange={selectOption}
+          />
+        </div>
+        <div>
+          <FormSelect
             alias="category"
             name="Task Group"
             options={CATEGORIES}
@@ -96,109 +112,26 @@ const CreateTask = () => {
             onChange={selectOption}
           />
         </div>
-        {/* <div>
-          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div className="relative z-10">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="bg-lightPink p-1 rounded-lg">
-                    <IoBagHandleSharp className="text-lg text-darkPink" />
-                  </span>
-                  <div>
-                    <span className="text-textSecondary font-semibold text-xs">
-                      Task Group
-                    </span>
-                    <h4 className="text-textPrimary text-md font-bold mt-0">
-                      Work
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  {toggle ? (
-                    <FaCaretUp
-                      className="text-textPrimary text-2xl"
-                      onClick={() => setToggle((prev) => !prev)}
-                    />
-                  ) : (
-                    <FaCaretDown
-                      className="text-textPrimary text-2xl"
-                      onClick={() => setToggle((prev) => !prev)}
-                    />
-                  )}
-                </div>
-              </div>
-              <div
-                className={`absolute rounded-lg bg-white border-[#EDEDED] border-x-2 border-b-2 w-full p-3 transition-all duration-300 ease-in-out opacity-1 ${
-                  toggle
-                    ? "opacity-100 scale-100 visible"
-                    : "opacity-0 scale-95 invisible"
-                }`}
-              >
-                <div className="overflow-x-auto h-60 md:h-80">
-                  <ul className="space-y-2">
-                    {list.map((item) => (
-                      <li key={item}>
-                        <div className="flex items-center gap-3 hover:bg-[#EDEDED] p-3 rounded-lg border-b borer-b-[#EDEDED]">
-                          <span className="bg-lightPink p-1 rounded-lg">
-                            <IoBagHandleSharp className="text-lg text-darkPink" />
-                          </span>
-                          <div>
-                            <span className="text-textSecondary text-xs">
-                              Task Group
-                            </span>
-                            <h4 className="text-textPrimary text-md font-bold mt-0">
-                              Work
-                            </h4>
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div> */}
         <div>
-          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div>
-              <label
-                htmlFor="title"
-                className="text-textSecondary font-semibold text-xs block"
-              >
-                Project Name
-              </label>
-              <input
-                onChange={handleChange}
-                value={formData.title}
-                type="text"
-                className="py-1 text-textPrimary px-0 w-full font-semibold ring-0 border-0 outline-none placeholder:opacity-30"
-                id="title"
-                name="title"
-                placeholder="Enter Project Name"
-              />
-            </div>
-          </Card>
+          <FormInput
+            label="Project Name"
+            placeholder="Enter Project Name"
+            id="title"
+            name="title"
+            onChange={handleChange}
+            value={formData.title}
+            invalid={true}
+          />
         </div>
         <div>
-          <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-            <div>
-              <label
-                htmlFor="title"
-                className="text-textSecondary font-semibold text-xs block"
-              >
-                Description
-              </label>
-              <textarea
-                onChange={handleChange}
-                value={formData.description}
-                name="description"
-                className="py-3 text-textPrimary px-0 w-full text-sm font-semibold ring-0 border-0 outline-none placeholder:opacity-30 h-24"
-                id="description"
-                placeholder="Enter Project Description"
-              />
-            </div>
-          </Card>
+          <FormText
+            label="Description"
+            id="description"
+            placeholder="Enter Project Description"
+            onChange={handleChange}
+            value={formData.description}
+            invalid={true}
+          />
         </div>
         <div>
           <FormDate

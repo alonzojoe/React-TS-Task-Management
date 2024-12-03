@@ -33,7 +33,7 @@ const FormSelect = <T extends OptionBased>({
   const selectedOption = options.find((option) => option.id === value);
   return (
     <Card background="cardBg" shrink="shrink-0" width="w-[full]">
-      <div className="relative z-10">
+      <div className="relative">
         <div className="flex items-center justify-between">
           {selectedOption && (
             <div className="flex items-center gap-3">
@@ -69,18 +69,20 @@ const FormSelect = <T extends OptionBased>({
           </div>
         </div>
         <div
-          className={`absolute rounded-lg bg-white border-[#EDEDED] border-x-2 border-b-2 w-full p-3 transition-all duration-300 ease-in-out opacity-1 ${
+          className={`absolute z-10 rounded-lg bg-white border-[#EDEDED] border-x-2 border-b-2 w-full p-3 transition-all duration-300 ease-in-out opacity-1 ${
             isShow
               ? "opacity-100 scale-100 visible"
               : "opacity-0 scale-95 invisible"
           }`}
         >
-          <div className="overflow-x-auto h-40">
+          <div className="overflow-x-auto h-50 z-50">
             <ul className="space-y-2">
               {options.map((option, index) => (
                 <li key={index}>
                   <div
-                    className="flex items-center gap-3 hover:bg-[#EDEDED] p-3 rounded-lg border-b borer-b-[#EDEDED]"
+                    className={`flex items-center gap-3 ${
+                      option.id === value ? "bg-[#EDEDED]" : ""
+                    } hover:bg-[#EDEDED] p-3 rounded-lg border-b borer-b-[#EDEDED]`}
                     onClick={() => {
                       onChange(alias, option);
                       toggleDropdown();
