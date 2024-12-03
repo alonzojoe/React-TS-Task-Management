@@ -79,7 +79,7 @@ const AppLayout = () => {
           <img
             src={storedImage}
             alt="avatar"
-            className="h-auto w-[50px] rounded-full"
+            className="h-[50px] w-[50px] rounded-full object-cover"
           />
         </div>
         <div>
