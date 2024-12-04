@@ -1,4 +1,6 @@
 import { ComponentType } from "react";
+import { Category } from "./Categories";
+
 export type FormData = {
     category: number;
     title: string;
@@ -35,4 +37,9 @@ export type OptionBased = {
 export type TValidation = {
     title: boolean,
     description: boolean
+}
+
+export type TaskData = Omit<Task, "category" | "status"> & {
+    category: Category | null;
+    status: Status | null
 }
