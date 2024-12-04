@@ -12,6 +12,7 @@ import CreateTask from "./pages/Tasks/CreateTask";
 import TodayTasks from "./pages/Tasks/TodayTasks";
 import Profile from "./pages/Profile/Profile";
 import TaskList from "./pages/Tasks/TaskList";
+import Settings from "./pages/Settings/Settings";
 import ProtectedRoutes from "./libs/guard/ProtectedRoutes";
 import { TasksContextProvider } from "./store/tasks-context";
 import { Toaster } from "react-hot-toast";
@@ -32,7 +33,8 @@ function App() {
                   <Route path="create" element={<CreateTask />} />
                   <Route path="lists" element={<TaskList />} />
                 </Route>
-                <Route path="Profile" element={<Profile />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="settings" element={<Settings />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/home" />} />

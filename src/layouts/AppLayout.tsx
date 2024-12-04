@@ -30,6 +30,7 @@ const APPTITLE: {
   { id: 3, title: "Task List", path: "/home/task/lists" },
   { id: 4, title: "Profile", path: "/home/profile" },
   { id: 5, title: "Dashboard", path: "/home" },
+  { id: 6, title: "Settings", path: "/home/settings" },
 ];
 
 const AppLayout = () => {
@@ -61,9 +62,9 @@ const AppLayout = () => {
         <PiArrowLeftFill className="text-3xl" />
       </span>
       <span className="font-bold text-textPrimary">{title}</span>
-      <span>
-        <IoSettingsSharp />
-      </span>
+      <Link to="/home/settings">
+        <IoSettingsSharp className="text-2xl" />
+      </Link>
     </div>
   );
   if (!storedProfile) return <Navigate to="/" />;
@@ -90,9 +91,11 @@ const AppLayout = () => {
           </h4>
         </div>
       </div>
-      <span>
-        <IoSettingsSharp className="text-2xl" />
-      </span>
+      <div>
+        <Link to="/home/settings">
+          <IoSettingsSharp className="text-2xl" />
+        </Link>
+      </div>
     </div>
   );
 
