@@ -33,7 +33,7 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");
-  const { setPayload } = useTask();
+  const { setPayload, isInvalid } = useTask();
 
   useEffect(() => {
     setPayload(formData);
@@ -130,7 +130,7 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
             name="title"
             onChange={handleChange}
             value={formData.title}
-            invalid={true}
+            invalid={isInvalid.title}
           />
         </div>
         <div>
@@ -141,7 +141,7 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
             placeholder="Enter Project Description"
             onChange={handleChange}
             value={formData.description}
-            invalid={true}
+            invalid={isInvalid.description}
           />
         </div>
         <div>

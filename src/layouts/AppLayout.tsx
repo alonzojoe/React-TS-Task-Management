@@ -6,7 +6,7 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import { FaBell } from "react-icons/fa";
+import { IoSettingsSharp } from "react-icons/io5";
 import { RiHomeFill } from "react-icons/ri";
 import { FaCalendarDays } from "react-icons/fa6";
 import { IoIosListBox } from "react-icons/io";
@@ -32,7 +32,7 @@ const APPTITLE: {
   { id: 5, title: "Dashboard", path: "/home" },
 ];
 
-const AppLayout = ({ onSave }: { onSave: (data: any) => void }) => {
+const AppLayout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [navbarHeight, setNavbarHeight] = useState(0);
@@ -62,7 +62,7 @@ const AppLayout = ({ onSave }: { onSave: (data: any) => void }) => {
       </span>
       <span className="font-bold text-textPrimary">{title}</span>
       <span>
-        <FaBell />
+        <IoSettingsSharp />
       </span>
     </div>
   );
@@ -91,7 +91,7 @@ const AppLayout = ({ onSave }: { onSave: (data: any) => void }) => {
         </div>
       </div>
       <span>
-        <FaBell className="text-2xl" />
+        <IoSettingsSharp className="text-2xl" />
       </span>
     </div>
   );
@@ -113,7 +113,7 @@ const AppLayout = ({ onSave }: { onSave: (data: any) => void }) => {
         <div style={{ paddingTop: `${navbarHeight}px` }}>
           <Outlet />
         </div>
-        <MenuBar onSave={onSave} />
+        <MenuBar />
       </main>
     </>
   );
@@ -146,7 +146,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
   }
 );
 
-function MenuBar({ onSave }: { onSave: (data: any) => void }) {
+function MenuBar() {
   const { addTask, payload } = useTask();
   const activeClass = `text-bgActive shadow-indigo-700`;
   const inactiveClass = `text-bgInactive`;

@@ -10,7 +10,7 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   ({ label, invalid = false, ...rest }, ref) => {
     const invalidClass = {
-      shake: invalid ? "animate-[shake_0.4s_ease-in-out]" : "",
+      shake: invalid ? "animate-[shake_0.5s_ease-in-out]" : "",
       textColor: invalid ? "text-red-500" : "textSecondary",
       inputBorder: invalid ? "border-b-2 border-red-400" : "",
     };
@@ -22,7 +22,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             htmlFor={rest.id}
             className={`${invalidClass.textColor} font-semibold text-xs block`}
           >
-            {label}
+            {label} {invalid && <small>(required)</small>}
           </label>
           <input
             ref={ref}

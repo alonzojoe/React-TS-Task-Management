@@ -1,13 +1,16 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { type Task, type FormData } from "../types/Task";
+import { useNavigate } from "react-router-dom";
+import { type Task, type FormData, type TValidation } from "../types/Task";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
+import toast from "react-hot-toast";
 
 type TasksContextType = {
   tasks: Task[] | null;
   addTask: (data: FormData) => void;
   setPayload: React.Dispatch<React.SetStateAction<FormData | null>>;
   payload: FormData | null;
+  isInvalid: TValidation;
 };
 
 const TasksContext = createContext<TasksContextType>({
@@ -17,6 +20,10 @@ const TasksContext = createContext<TasksContextType>({
     throw new Error("setPayload function must be implemented in the provider.");
   },
   payload: null,
+  isInvalid: {
+    title: false,
+    description: false,
+  },
 });
 
 type TasksContextProviderProps = {
@@ -28,14 +35,30 @@ export const TasksContextProvider = ({
 }: TasksContextProviderProps) => {
   const [tasks, setTasks] = useLocalStorage<Task[] | null>("T_TASKS", null);
   const [payload, setPayload] = useState<FormData | null>(null);
+  const [isInvalid, setIsInvalid] = useState<TValidation>({
+    title: false,
+    description: false,
+  });
+  const navigate = useNavigate();
 
   const addTask = (data: FormData) => {
+    const { title, description } = data;
+
+    const newInvalidState = {
+      title: title.trim() === "",
+      description: description.trim() === "",
+    };
+
+    setIsInvalid(newInvalidState);
+    if (newInvalidState.title || newInvalidState.description) return;
+
     const newTask: Task = {
       ...data,
       id: uuidV4(),
     };
-
     setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
+    toast.success("Project added!");
+    navigate("/home/task/lists");
   };
 
   const value = {
@@ -43,6 +66,7 @@ export const TasksContextProvider = ({
     addTask,
     setPayload,
     payload,
+    isInvalid,
   };
 
   return (

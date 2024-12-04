@@ -31,3 +31,8 @@ export type OptionBased = {
     color?: string;
     bgColor?: string;
 }
+
+export type TValidation = {
+    title: boolean,
+    description: boolean
+}

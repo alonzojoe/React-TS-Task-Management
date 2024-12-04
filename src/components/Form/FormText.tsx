@@ -14,7 +14,7 @@ const FormText = ({
   ...rest
 }: FormTextProps) => {
   const invalidClass = {
-    shake: invalid ? "animate-[shake_0.4s_ease-in-out]" : "",
+    shake: invalid ? "animate-[shake_0.5s_ease-in-out]" : "",
     textColor: invalid ? "text-red-500" : "textSecondary",
     inputBorder: invalid ? "border-b-2 border-red-400" : "",
   };
@@ -25,7 +25,7 @@ const FormText = ({
           htmlFor={rest.id}
           className={`${invalidClass.textColor} font-semibold text-xs block`}
         >
-          {label}
+          {label} {invalid && <small>(required)</small>}
         </label>
         <textarea
           className={`py-3 text-textPrimary px-0 w-full text-sm font-semibold ring-0 border-0 outline-none placeholder:opacity-30 ${invalidClass.inputBorder} ${height}`}
