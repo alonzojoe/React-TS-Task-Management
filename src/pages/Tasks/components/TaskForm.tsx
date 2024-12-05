@@ -14,6 +14,7 @@ import {
   type DateSelection,
 } from "../../../types/Task";
 import useTask from "../../../store/tasks-context";
+import { formatDate } from "../../../libs/utils";
 
 const initialState = {
   category: 1,
@@ -148,7 +149,7 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
           <FormDate
             alias="startDate"
             title="Start Date"
-            label="Nov 27, 2024"
+            label={formatDate(formData.startDate)}
             onActiveField={setActiveField}
             onToggleField={toggleCalendar}
           />
@@ -157,7 +158,7 @@ const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
           <FormDate
             alias="endDate"
             title="End Date"
-            label="Nov 27, 2024"
+            label={formatDate(formData.endDate)}
             onActiveField={setActiveField}
             onToggleField={toggleCalendar}
           />

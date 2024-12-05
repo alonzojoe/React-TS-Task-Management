@@ -28,8 +28,7 @@ const Confirmation = ({ onToggle, onConfirm }: ConfirmationProps) => {
           </span>
           <h2 className="text-textPrimary text-2xl">Are you sure?</h2>
           <p className="text-center text-textSecondary">
-            Are you certain you want to clear the app data? This action cannot
-            be undone.
+            Clearing the app data cannot be undone. Do you want to proceed?
           </p>
           <div className="pb-5 flex items-center justify-center gap-4">
             <button
