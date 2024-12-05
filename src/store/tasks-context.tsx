@@ -53,21 +53,31 @@ export const TasksContextProvider = ({
     setIsInvalid(newInvalidState);
     if (newInvalidState.title || newInvalidState.description) return;
     console.log("taskid", taskId);
-    // if (typeof taskId === "string") {
-    //   const selectedTask: Task = {
-    //     ...data,
-    //     id: taskId,
-    //   };
-    //   console.log("selected task", selectedTask);
-    //   toast.success("Project Updated!");
-    // } else {
-    //   const newTask: Task = {
-    //     ...data,
-    //     id: uuidV4(),
-    //   };
-    //   setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
-    //   toast.success("Project added!");
-    // }
+    if (typeof taskId === "string") {
+      const updatedTask: Task = {
+        ...data,
+        id: taskId,
+      };
+      setTasks((prevTasks) => {
+        if (Array.isArray(prevTasks)) {
+          const updatedTasks = prevTasks.map((task) =>
+            task.id === taskId ? updatedTask : task
+          );
+          toast.success("Project Updated!");
+          return updatedTasks;
+        }
+        return [];
+      });
+      console.log("selected task", updatedTask);
+      toast.success("Project Updated!");
+    } else {
+      const newTask: Task = {
+        ...data,
+        id: uuidV4(),
+      };
+      setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
+      toast.success("Project added!");
+    }
 
     // navigate("/home/task/lists");
   };
