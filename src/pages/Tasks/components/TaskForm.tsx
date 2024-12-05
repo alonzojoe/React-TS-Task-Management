@@ -26,11 +26,10 @@ const initialState = {
 };
 
 type TaskFormProps = {
-  onAdd: (data: FormData) => void;
   isUpdate?: boolean;
 };
 
-const TaskForm = ({ onAdd, isUpdate = false }: TaskFormProps) => {
+const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");

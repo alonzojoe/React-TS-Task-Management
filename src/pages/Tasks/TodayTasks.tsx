@@ -4,48 +4,11 @@ import { FaCheckCircle } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { GoClockFill } from "react-icons/go";
 import { RiCalendarTodoFill } from "react-icons/ri";
+import CalendarSwipe from "./components/CalendarSwipe";
 const TodayTasks = () => {
   return (
     <div className="container space-y-5  py-2">
-      <div className="overflow-x-auto whitespace-nowrap py-4">
-        <div className="flex items-center justify-center space-x-2">
-          <Card padding="p-3" background="cardBg" width="w-[full]">
-            <div className="flex flex-col items-center gap-2 px-4">
-              <h4>Nov</h4>
-              <h1 className="text-2xl font-bold">25</h1>
-              <h4>MOn</h4>
-            </div>
-          </Card>
-          <Card padding="p-3" background="cardBg" width="w-[full]">
-            <div className="flex flex-col items-center gap-2 px-4">
-              <h4>Nov</h4>
-              <h1 className="text-2xl font-bold">26</h1>
-              <h4>Tue</h4>
-            </div>
-          </Card>
-          <Card padding="p-3" background="bg-primary" width="w-[full]">
-            <div className="flex flex-col items-center gap-2 px-4 text-white">
-              <h4>Nov</h4>
-              <h1 className="text-2xl font-bold">27</h1>
-              <h4>Wed</h4>
-            </div>
-          </Card>
-          <Card padding="p-3" background="cardBg" width="w-[full]">
-            <div className="flex flex-col items-center gap-2 px-4">
-              <h4>Nov</h4>
-              <h1 className="text-2xl font-bold">28</h1>
-              <h4>Thu</h4>
-            </div>
-          </Card>
-          <Card padding="p-3" background="cardBg" width="w-[full]">
-            <div className="flex flex-col items-center gap-2 px-4">
-              <h4>Nov</h4>
-              <h1 className="text-2xl font-bold">29</h1>
-              <h4>Fri</h4>
-            </div>
-          </Card>
-        </div>
-      </div>
+      <CalendarSwipe />
       <div className="overflow-x-auto whitespace-nowrap py-4">
         <div className="flex space-x-4">
           <button className="sm-btn text-md font-semibold py-1 px-6 w-full bg-primary text-white">
