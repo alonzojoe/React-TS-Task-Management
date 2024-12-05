@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import BannerImg from "../../assets/images/home.png";
+import BannerImg from "../../assets/images/home.webp";
 import Background from "../../assets/images/background.png";
 import { PiArrowRightFill } from "react-icons/pi";
 // import { useNavigate } from "react-router-dom";
@@ -88,7 +88,7 @@ const Home = () => {
     <>
       {showModal && (
         <Modal>
-          <div className="bg-white rounded-2xl w-[90vw]">
+          <div className="bg-white rounded-2xl w-[90vw] md:w-[50vw] lg:w-[30wv]">
             <div className="px-5 pb-14 pt-8">
               <h2 className="text-textPrimary font-bold text-2xl py-2 text-center">
                 Create Profile
@@ -99,7 +99,7 @@ const Home = () => {
         </Modal>
       )}
       <section
-        className="overflow-hidden bg-cover bg-center"
+        className="overflow-hidden bg-cover bg-center h-screen flex items-center justify-center"
         style={{
           backgroundImage: `url(${Background})`,
           backgroundRepeat: "no-repeat",
@@ -107,7 +107,11 @@ const Home = () => {
       >
         <div className="container grid grid-cols-1 md:grid-cols-2">
           <div className="flex justify-center items-center pt-14 md:pt-8">
-            <img src={BannerImg} alt="Banner-Img" />
+            <img
+              src={BannerImg}
+              alt="Banner-Img"
+              className="h-auto md:w-[350px]"
+            />
           </div>
           <div className="flex flex-col justify-center py-14">
             <div className="text-center md:text-right space-y-10 px-4">
