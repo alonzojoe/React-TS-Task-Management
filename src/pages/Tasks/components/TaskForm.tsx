@@ -15,6 +15,7 @@ import {
 } from "../../../types/Task";
 import useTask from "../../../store/tasks-context";
 import { formatDate } from "../../../libs/utils";
+import { useParams } from "react-router-dom";
 
 const initialState = {
   category: 1,
@@ -33,7 +34,26 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");
-  const { setPayload, isInvalid } = useTask();
+  const { tasks, setPayload, isInvalid } = useTask();
+
+  const { id } = useParams();
+
+  console.log("id", id);
+
+  useEffect(() => {
+    if (isUpdate) {
+      if (!tasks || tasks.length === 0) return;
+
+      const selectedTask =
+        tasks.length > 0 && tasks.find((task) => task.id === id);
+      if (selectedTask) {
+        console.log("selectedTask", selectedTask);
+        setFormData(selectedTask);
+      } else {
+        console.log("Task not found");
+      }
+    }
+  }, [id, tasks, isUpdate, setFormData]);
 
   useEffect(() => {
     setPayload(formData);
@@ -94,7 +114,7 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
         </Modal>
       )}
       <form className="space-y-6">
-        <div>
+        <div className={isUpdate ? "block" : "hidden"}>
           <FormSelect
             alias="status"
             name="Status"

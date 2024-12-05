@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import AppLayout from "./layouts/AppLayout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import CreateTask from "./pages/Tasks/CreateTask";
+import EditTask from "./pages/Tasks/EditTask";
 import TodayTasks from "./pages/Tasks/TodayTasks";
 import Profile from "./pages/Profile/Profile";
 import TaskList from "./pages/Tasks/TaskList";
@@ -31,6 +32,7 @@ function App() {
                 <Route path="task" element={<Outlet />}>
                   <Route index element={<TodayTasks />} />
                   <Route path="create" element={<CreateTask />} />
+                  <Route path=":id/edit" element={<EditTask />} />
                   <Route path="lists" element={<TaskList />} />
                 </Route>
                 <Route path="profile" element={<Profile />} />

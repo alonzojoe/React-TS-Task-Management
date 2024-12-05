@@ -33,6 +33,7 @@ const CalendarSwipe = () => {
 
   const handleDayClick = (date: Moment) => {
     setSelectedDate(date);
+    console.log(date);
   };
 
   return (
@@ -46,41 +47,6 @@ const CalendarSwipe = () => {
             onClick={handleDayClick}
           />
         ))}
-        {/* <Card padding="p-3" background="cardBg" width="w-[full]">
-          <div className="flex flex-col items-center gap-2 px-4">
-            <h4>Nov</h4>
-            <h1 className="text-2xl font-bold">25</h1>
-            <h4>MOn</h4>
-          </div>
-        </Card>
-        <Card padding="p-3" background="cardBg" width="w-[full]">
-          <div className="flex flex-col items-center gap-2 px-4">
-            <h4>Nov</h4>
-            <h1 className="text-2xl font-bold">26</h1>
-            <h4>Tue</h4>
-          </div>
-        </Card>
-        <Card padding="p-3" background="bg-primary" width="w-[full]">
-          <div className="flex flex-col items-center gap-2 px-4 text-white">
-            <h4>Nov</h4>
-            <h1 className="text-2xl font-bold">27</h1>
-            <h4>Wed</h4>
-          </div>
-        </Card>
-        <Card padding="p-3" background="cardBg" width="w-[full]">
-          <div className="flex flex-col items-center gap-2 px-4">
-            <h4>Nov</h4>
-            <h1 className="text-2xl font-bold">28</h1>
-            <h4>Thu</h4>
-          </div>
-        </Card>
-        <Card padding="p-3" background="cardBg" width="w-[full]">
-          <div className="flex flex-col items-center gap-2 px-4">
-            <h4>Nov</h4>
-            <h1 className="text-2xl font-bold">29</h1>
-            <h4>Fri</h4>
-          </div>
-        </Card> */}
       </div>
     </div>
   );

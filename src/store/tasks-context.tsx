@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { type Task, type FormData, type TValidation } from "../types/Task";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
@@ -40,6 +40,7 @@ export const TasksContextProvider = ({
     description: false,
   });
   const navigate = useNavigate();
+  const { id: taskId } = useParams();
 
   const addTask = (data: FormData) => {
     const { title, description } = data;
@@ -51,14 +52,24 @@ export const TasksContextProvider = ({
 
     setIsInvalid(newInvalidState);
     if (newInvalidState.title || newInvalidState.description) return;
+    console.log("taskid", taskId);
+    // if (typeof taskId === "string") {
+    //   const selectedTask: Task = {
+    //     ...data,
+    //     id: taskId,
+    //   };
+    //   console.log("selected task", selectedTask);
+    //   toast.success("Project Updated!");
+    // } else {
+    //   const newTask: Task = {
+    //     ...data,
+    //     id: uuidV4(),
+    //   };
+    //   setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
+    //   toast.success("Project added!");
+    // }
 
-    const newTask: Task = {
-      ...data,
-      id: uuidV4(),
-    };
-    setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
-    toast.success("Project added!");
-    navigate("/home/task/lists");
+    // navigate("/home/task/lists");
   };
 
   const value = {

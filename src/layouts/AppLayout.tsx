@@ -5,6 +5,7 @@ import {
   Link,
   useNavigate,
   Navigate,
+  useParams,
 } from "react-router-dom";
 import { IoSettingsSharp } from "react-icons/io5";
 import { RiHomeFill } from "react-icons/ri";
@@ -39,6 +40,14 @@ const AppLayout = () => {
   const [navbarHeight, setNavbarHeight] = useState(0);
   const navbarRef = useRef<HTMLDivElement>(null);
   const storedProfile = getLocalStorageItem<Profile>("T_PROFILE");
+  const { id } = useParams();
+  const updateItem = {
+    id: 7,
+    title: "Edit Project",
+    path: `/home/task/${id}/edit`,
+  };
+
+  APPTITLE.push(updateItem);
 
   useEffect(() => {
     const getNavbarHeight = () => {
@@ -153,6 +162,7 @@ function MenuBar() {
   const { addTask, payload } = useTask();
   const activeClass = `text-bgActive shadow-indigo-700`;
   const inactiveClass = `text-bgInactive`;
+  const { id } = useParams();
 
   const { pathname } = useLocation();
 
@@ -182,7 +192,8 @@ function MenuBar() {
           />
         </Link>
         <span></span>
-        {pathname !== "/home/task/create" ? (
+        {pathname !== "/home/task/create" &&
+        pathname !== `/home/task/${id}/edit` ? (
           <Link
             to="/home/task/create"
             className="absolute border-white border-[5px] left-1/2 -translate-x-1/2 -top-[55px] s-[60px] p-4 bg-primary rounded-full flex items-center justify-center"
