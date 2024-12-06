@@ -40,7 +40,6 @@ export const TasksContextProvider = ({
     description: false,
   });
   const navigate = useNavigate();
-  const { id: taskId } = useParams();
 
   const addTask = (data: FormData) => {
     const { title, description } = data;
@@ -52,25 +51,31 @@ export const TasksContextProvider = ({
 
     setIsInvalid(newInvalidState);
     if (newInvalidState.title || newInvalidState.description) return;
-    console.log("taskid", taskId);
+    console.log("payload in ctx", payload);
+
+    const { id: taskId } = payload as FormData;
+
     if (typeof taskId === "string") {
+      console.log("task is being updated");
       const updatedTask: Task = {
         ...data,
         id: taskId,
       };
+
       setTasks((prevTasks) => {
         if (Array.isArray(prevTasks)) {
           const updatedTasks = prevTasks.map((task) =>
             task.id === taskId ? updatedTask : task
           );
-          toast.success("Project Updated!");
           return updatedTasks;
         }
         return [];
       });
+
       console.log("selected task", updatedTask);
       toast.success("Project Updated!");
     } else {
+      console.log("task is being added");
       const newTask: Task = {
         ...data,
         id: uuidV4(),
@@ -79,7 +84,7 @@ export const TasksContextProvider = ({
       toast.success("Project added!");
     }
 
-    // navigate("/home/task/lists");
+    navigate("/home/task/lists");
   };
 
   const value = {

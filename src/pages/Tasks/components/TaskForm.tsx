@@ -56,8 +56,15 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   }, [id, tasks, isUpdate, setFormData]);
 
   useEffect(() => {
-    setPayload(formData);
-  }, [formData, setPayload]);
+    if (!isUpdate) {
+      setPayload(formData);
+    } else {
+      setPayload({
+        ...formData,
+        id,
+      });
+    }
+  }, [isUpdate, formData, id, setPayload]);
 
   const selectOption = (alias: string, value: OptionBased) => {
     console.log("selectedCategory", value);

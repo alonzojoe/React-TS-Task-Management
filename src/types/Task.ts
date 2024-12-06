@@ -2,6 +2,7 @@ import { ComponentType } from "react";
 import { Category } from "./Categories";
 
 export type FormData = {
+    id?: string;
     category: number;
     title: string;
     description: string;
