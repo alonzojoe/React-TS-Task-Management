@@ -1,9 +1,7 @@
 import { useMemo } from "react";
-import Card from "../../components/UI/Card";
 import TasksStatus from "./components/TasksStatus";
 import TaskGroup from "./components/TaskGroup";
 import TaskHeader from "./components/TaskHeader";
-import { IoBagHandleSharp } from "react-icons/io5";
 import { CATEGORIES, STATUS } from "../../constants/global";
 import useTask from "../../store/tasks-context";
 import { TaskData } from "../../types/Task";
@@ -63,12 +61,23 @@ const Dashboard = () => {
     });
   }, [mappedTasks]);
 
+  const allTasksPercentage = useMemo(() => {
+    if (!mappedTasks || mappedTasks.length === 0) return 0;
+
+    const totalTasks = mappedTasks.length;
+    const completedTasks = mappedTasks.filter(
+      (task) => task.status?.name === "Done"
+    ).length;
+
+    return Math.round((completedTasks / totalTasks) * 100);
+  }, [mappedTasks]);
+
   console.log("categoryData", categoryData);
 
   return (
     <div className="container grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 py-2">
       <div className="flex flex-col justify-center md:justify-start space-y-8">
-        <TasksStatus percentage={1} />
+        <TasksStatus percentage={allTasksPercentage} />
         <div className="md:hidden">
           <TaskHeader caption="In Progress" count={inProgressTasks?.length} />
           <div className="overflow-x-auto whitespace-nowrap py-4">
