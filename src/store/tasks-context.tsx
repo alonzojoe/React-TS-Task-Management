@@ -4,6 +4,7 @@ import { type Task, type FormData, type TValidation } from "../types/Task";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 type TasksContextType = {
   tasks: Task[] | null;
@@ -76,10 +77,15 @@ export const TasksContextProvider = ({
       toast.success("Project Updated!");
     } else {
       console.log("task is being added");
+
       const newTask: Task = {
         ...data,
+        startDate: moment(data.startDate).startOf("day").toDate(),
+        endDate: moment(data.endDate).startOf("day").toDate(),
         id: uuidV4(),
       };
+      console.log("new task", newTask);
+      // return;
       setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
       toast.success("Project added!");
     }
@@ -87,8 +93,16 @@ export const TasksContextProvider = ({
     navigate("/home/task/lists");
   };
 
+  const updatedTasks = tasks?.map((task) => {
+    return {
+      ...task,
+      startDate: task.startDate ? new Date(task.startDate) : null,
+      endDate: task.endDate ? new Date(task.endDate) : null,
+    };
+  });
+  console.log("updated t", updatedTasks);
   const value = {
-    tasks,
+    tasks: updatedTasks,
     addTask,
     setPayload,
     payload,

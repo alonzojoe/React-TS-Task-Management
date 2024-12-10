@@ -12,6 +12,7 @@ const TaskFilter = ({ filter, onFilter }: TaskFilterProps) => {
       <div className="flex space-x-4">
         {FILTER_STATUS.map((stat) => (
           <button
+            key={stat.id}
             className={`sm-btn text-md font-semibold py-1 px-6 w-full ${
               filter === stat.alias ? "bg-primary text-white" : ""
             }`}

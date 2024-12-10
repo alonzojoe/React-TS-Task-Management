@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import moment, { Moment } from "moment";
 import CalendarDays from "./CalendarDays";
 
-const CalendarSwipe = () => {
+type CalendarSwipeProps = {
+  onDateSelect: React.Dispatch<React.SetStateAction<Moment>>;
+};
+
+const CalendarSwipe = ({ onDateSelect }: CalendarSwipeProps) => {
   const [daysToShow, setDaysToShow] = useState(5);
   const [selectedDate, setSelectedDate] = useState<Moment>(moment());
 
@@ -33,6 +37,7 @@ const CalendarSwipe = () => {
 
   const handleDayClick = (date: Moment) => {
     setSelectedDate(date);
+    onDateSelect(date);
     console.log(date);
   };
 
