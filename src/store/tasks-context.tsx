@@ -11,6 +11,7 @@ type TasksContextType = {
   addTask: (data: FormData) => void;
   setPayload: React.Dispatch<React.SetStateAction<FormData | null>>;
   payload: FormData | null;
+  setIsInvalid: React.Dispatch<React.SetStateAction<TValidation>>;
   isInvalid: TValidation;
 };
 
@@ -24,6 +25,11 @@ const TasksContext = createContext<TasksContextType>({
   isInvalid: {
     title: false,
     description: false,
+  },
+  setIsInvalid: () => {
+    throw new Error(
+      "setIsInvalid function must be implemented in the provider."
+    );
   },
 });
 
@@ -106,6 +112,7 @@ export const TasksContextProvider = ({
     addTask,
     setPayload,
     payload,
+    setIsInvalid,
     isInvalid,
   };
 

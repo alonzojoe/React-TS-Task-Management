@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, useEffect } from "react";
+import { useState, type ChangeEvent, useEffect, useMemo } from "react";
 import useToggle from "../../../hooks/useToggle";
 import FormSelect from "../../../components/Form/FormSelect";
 import FormInput from "../../../components/Form/FormInput";
@@ -34,26 +34,22 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");
-  const { tasks, setPayload, isInvalid, payload } = useTask();
+  const { tasks, setPayload, isInvalid, payload, setIsInvalid } = useTask();
 
   const { id } = useParams();
 
   console.log("id", id);
 
-  useEffect(() => {
-    if (isUpdate) {
-      if (!tasks || tasks.length === 0) return;
+  const selectedTask = useMemo(() => {
+    if (!tasks || tasks.length === 0) return null;
+    return tasks.find((task) => task.id === id);
+  }, [tasks, id]);
 
-      const selectedTask =
-        tasks.length > 0 && tasks.find((task) => task.id === id);
-      if (selectedTask) {
-        console.log("selectedTask", selectedTask);
-        setFormData(selectedTask);
-      } else {
-        console.log("Task not found");
-      }
+  useEffect(() => {
+    if (isUpdate && selectedTask) {
+      setFormData(selectedTask);
     }
-  }, [id, tasks, isUpdate, setFormData]);
+  }, [isUpdate, selectedTask, setFormData]);
 
   useEffect(() => {
     if (!isUpdate) {
