@@ -6,9 +6,10 @@ import { Category } from "../../../types/Categories";
 type TaskGroupProps = {
   category: Category;
   taskCount: number;
+  percentage: number;
 };
 
-const TaskGroup = ({ category, taskCount = 0 }: TaskGroupProps) => {
+const TaskGroup = ({ category, taskCount, percentage }: TaskGroupProps) => {
   const {
     id,
     name,
@@ -38,7 +39,7 @@ const TaskGroup = ({ category, taskCount = 0 }: TaskGroupProps) => {
             textColor="text-black"
             strokeColor={bgColor}
             fillColor={color}
-            percentage={5}
+            percentage={percentage}
             size={50}
             strokeWidth={5}
             textSize="text-sm"

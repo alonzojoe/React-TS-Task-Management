@@ -13,13 +13,11 @@ const InProgressLists = ({ tasks }: InProgressListsProps) => {
       </p>
     );
   return (
-    <div className="overflow-x-auto whitespace-nowrap py-4">
-      <div className="flex space-x-4">
-        {tasks.map((task) => (
-          <InProgressItem key={task.id} task={task} />
-        ))}
-      </div>
-    </div>
+    <>
+      {tasks.map((task) => (
+        <InProgressItem key={task.id} task={task} />
+      ))}
+    </>
   );
 };
 

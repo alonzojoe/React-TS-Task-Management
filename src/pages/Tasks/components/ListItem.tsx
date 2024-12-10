@@ -14,14 +14,14 @@ const ListItem = ({ task }: ListItemProps) => {
     );
   }
   return (
-    <Card background="cardBg" shrink="shrink-0" width="w-[full]">
+    <Card background="cardBg" shrink="shrink-0" width="w-full">
       <Link to={`/home/task/${task.id}/edit`}>
         <div className="flex justify-between items-start gap-3 cursor-pointer">
-          <div>
-            <span className="text-textSecondary text-sm text-ellipsis whitespace-nowrap overflow-hidden">
+          <div className="flex-1 min-w-0">
+            <span className="text-textSecondary text-sm text-ellipsis whitespace-nowrap overflow-hidden block">
               {task.description}
             </span>
-            <h4 className="text-textPrimary text-md font-bold mb-0 text-ellipsis whitespace-nowrap overflow-hidden">
+            <h4 className="text-textPrimary text-md font-bold mb-0 text-ellipsis whitespace-nowrap overflow-hidden block">
               {task.title}
             </h4>
           </div>

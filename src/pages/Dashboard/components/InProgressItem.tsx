@@ -16,7 +16,7 @@ const InProgressItem = ({ task }: InProgressItemProps) => {
     <Card
       background={task.category.classBgColor}
       shrink="shrink-0"
-      width="w-[250px]"
+      width="w-full"
     >
       <Link to={`/home/task/${task.id}/edit`}>
         <div className="flex items-center justify-between">
