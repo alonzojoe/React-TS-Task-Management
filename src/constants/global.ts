@@ -61,3 +61,10 @@ export const STATUS: Status[] = [
         classBgColor: 'bg-lightPrimary',
     }
 ]
+
+export const FILTER_STATUS = [
+    { id: 1, name: 'All', alias: null },
+    { id: 2, name: 'Todo', alias: 'To-do' },
+    { id: 3, name: 'In Progress', alias: 'In Progress' },
+    { id: 4, name: 'Completed', alias: 'Done' }
+]
