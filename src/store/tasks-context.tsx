@@ -96,8 +96,8 @@ export const TasksContextProvider = ({
   const updatedTasks = tasks?.map((task) => {
     return {
       ...task,
-      startDate: task.startDate ? new Date(task.startDate) : null,
-      endDate: task.endDate ? new Date(task.endDate) : null,
+      startDate: new Date(task.startDate),
+      endDate: new Date(task.endDate),
     };
   });
   console.log("updated t", updatedTasks);

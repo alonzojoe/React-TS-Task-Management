@@ -34,7 +34,7 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [isCalendarShow, toggleCalendar] = useToggle(false);
   const [activeField, setActiveField] = useState<DateSelection>("startDate");
-  const { tasks, setPayload, isInvalid } = useTask();
+  const { tasks, setPayload, isInvalid, payload } = useTask();
 
   const { id } = useParams();
 
@@ -57,14 +57,16 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
 
   useEffect(() => {
     if (!isUpdate) {
-      setPayload(formData);
+      if (JSON.stringify(formData) !== JSON.stringify(payload)) {
+        setPayload(formData);
+      }
     } else {
-      setPayload({
-        ...formData,
-        id,
-      });
+      const updatedPayload = { ...formData, id };
+      if (JSON.stringify(updatedPayload) !== JSON.stringify(payload)) {
+        setPayload(updatedPayload);
+      }
     }
-  }, [isUpdate, formData, id, setPayload]);
+  }, [isUpdate, formData, id, setPayload, payload]);
 
   const selectOption = (alias: string, value: OptionBased) => {
     console.log("selectedCategory", value);
