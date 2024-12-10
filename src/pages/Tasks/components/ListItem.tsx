@@ -18,10 +18,10 @@ const ListItem = ({ task }: ListItemProps) => {
       <Link to={`/home/task/${task.id}/edit`}>
         <div className="flex justify-between items-start gap-3 cursor-pointer">
           <div>
-            <span className="text-textSecondary text-sm text-ellipsis">
+            <span className="text-textSecondary text-sm text-ellipsis whitespace-nowrap overflow-hidden">
               {task.description}
             </span>
-            <h4 className="text-textPrimary text-md font-bold mb-0">
+            <h4 className="text-textPrimary text-md font-bold mb-0 text-ellipsis whitespace-nowrap overflow-hidden">
               {task.title}
             </h4>
           </div>

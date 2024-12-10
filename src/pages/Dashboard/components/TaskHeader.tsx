@@ -1,9 +1,9 @@
 type TaskHeaderProps = {
   caption: string;
-  count: number;
+  count?: number;
 };
 
-const TaskHeader = ({ caption, count }: TaskHeaderProps) => {
+const TaskHeader = ({ caption, count = 0 }: TaskHeaderProps) => {
   return (
     <div className="flex items-center gap-3">
       <h2 className="text-left text-textPrimary font-bold text-xl">

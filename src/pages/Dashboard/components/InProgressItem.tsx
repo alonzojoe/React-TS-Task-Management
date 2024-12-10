@@ -13,20 +13,24 @@ const InProgressItem = ({ task }: InProgressItemProps) => {
     );
   }
   return (
-    <Card background="bg-lightBlue" shrink="shrink-0" width="w-[250px]">
+    <Card
+      background={task.category.classBgColor}
+      shrink="shrink-0"
+      width="w-[250px]"
+    >
       <Link to={`/home/task/${task.id}/edit`}>
         <div className="flex items-center justify-between">
-          <span className="text-textSecondary text-sm text-ellipsis">
+          <span className="text-textSecondary text-sm text-ellipsis whitespace-nowrap overflow-hidden mb-4">
             {task.description}
           </span>
-          <span className={`${task.category.classBgColor} p-1 rounded-lg`}>
-            <task.status.icon
+          <span className={`bg-white p-1 rounded-lg mb-4`}>
+            <task.category.icon
               className={`text-lg ${task.category.classColor}`}
             />
           </span>
         </div>
         <div className="flex items-center justify-between py-0">
-          <h3 className="text-textPrimary text-md font-bold !leading-6 text-wrap">
+          <h3 className="text-textPrimary text-md font-bold !leading-6 text-ellipsis whitespace-nowrap overflow-hidden">
             {task.title}
           </h3>
           <div></div>
