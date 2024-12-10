@@ -1,6 +1,5 @@
 import { FormEvent, useRef, useState, useEffect } from "react";
 import FormInput from "../../../components/Form/FormInput";
-// import Avatar from "../../../assets/images/avatar.jpg";
 import { FaCamera } from "react-icons/fa";
 import useFileUpload from "../../../hooks/useFileUpload";
 import defaultAvatar from "../../../assets/images/default.png";
