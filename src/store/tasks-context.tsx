@@ -99,7 +99,7 @@ export const TasksContextProvider = ({
     navigate("/home/task/lists");
   };
 
-  const updatedTasks = tasks?.map((task) => {
+  const updatedTasks = tasks!.map((task) => {
     return {
       ...task,
       startDate: new Date(task.startDate),
@@ -108,7 +108,7 @@ export const TasksContextProvider = ({
   });
   console.log("updated t", updatedTasks);
   const value = {
-    tasks: updatedTasks,
+    tasks: updatedTasks || tasks,
     addTask,
     setPayload,
     payload,
