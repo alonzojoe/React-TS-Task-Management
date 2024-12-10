@@ -26,6 +26,11 @@ const initialState = {
   status: 1,
 };
 
+const initialValid = {
+  title: false,
+  description: false,
+};
+
 type TaskFormProps = {
   isUpdate?: boolean;
 };
@@ -61,8 +66,9 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
       if (JSON.stringify(updatedPayload) !== JSON.stringify(payload)) {
         setPayload(updatedPayload);
       }
+      setIsInvalid(initialValid);
     }
-  }, [isUpdate, formData, id, setPayload, payload]);
+  }, [isUpdate, formData, id, setPayload, payload, setIsInvalid]);
 
   const selectOption = (alias: string, value: OptionBased) => {
     console.log("selectedCategory", value);
