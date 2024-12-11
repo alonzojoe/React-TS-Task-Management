@@ -54,7 +54,7 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
     if (isUpdate && selectedTask) {
       setFormData(selectedTask);
     }
-  }, [isUpdate, selectedTask, setFormData]);
+  }, []); //update mounted
 
   useEffect(() => {
     if (!isUpdate) {

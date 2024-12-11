@@ -8,7 +8,7 @@ type InProgressListsProps = {
 const InProgressLists = ({ tasks }: InProgressListsProps) => {
   if (!tasks || tasks.length === 0)
     return (
-      <p className="mx-auto py-5 text-lg text-textSecondary">
+      <p className="mx-auto md:mx-0 py-5 text-lg text-textSecondary">
         No tasks available
       </p>
     );

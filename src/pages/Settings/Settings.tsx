@@ -16,6 +16,7 @@ const Settings = () => {
       setIsLoading(false);
       toast.success("App data cleared.");
       navigate("/");
+      location.reload();
     }, 3000);
   };
 

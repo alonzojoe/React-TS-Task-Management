@@ -89,14 +89,22 @@ const Dashboard = () => {
         <div className="mt-5 mb-10 md:mx-5 hidden md:block">
           <TaskHeader caption="Task Groups" count={categoryData.length} />
           <div className="grid grid-cols-1 space-y-8">
-            {categoryData.map(({ category, taskCount, percentage }) => (
-              <TaskGroup
-                key={category.id}
-                category={category}
-                taskCount={taskCount}
-                percentage={Math.round(percentage)}
-              />
-            ))}
+            {categoryData.length === 0 ? (
+              <p className="mx-auto md:mx-0 py-5 text-lg text-textSecondary">
+                No task groups available
+              </p>
+            ) : (
+              <>
+                {categoryData.map(({ category, taskCount, percentage }) => (
+                  <TaskGroup
+                    key={category.id}
+                    category={category}
+                    taskCount={taskCount}
+                    percentage={Math.round(percentage)}
+                  />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>
