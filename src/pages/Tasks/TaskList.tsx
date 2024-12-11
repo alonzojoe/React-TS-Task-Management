@@ -25,7 +25,7 @@ const TaskList = () => {
       });
   }, [tasks, filter]);
 
-  console.log("mapped task", mappedTasks);
+  // console.log("mapped task", mappedTasks);
   return (
     <div className="container space-y-5  py-2">
       <TaskFilter filter={filter} onFilter={setFilter} />

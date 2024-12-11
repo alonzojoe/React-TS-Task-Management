@@ -36,7 +36,7 @@ const Dashboard = () => {
     }));
   }, [tasks]);
 
-  console.log("dashboard", mappedTasks);
+  // console.log("dashboard", mappedTasks);
 
   const categoryData = useMemo(() => {
     if (!mappedTasks) return [];
@@ -72,7 +72,7 @@ const Dashboard = () => {
     return Math.round((completedTasks / totalTasks) * 100);
   }, [mappedTasks]);
 
-  console.log("categoryData", categoryData);
+  // console.log("categoryData", categoryData);
 
   return (
     <div className="container grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 py-2">

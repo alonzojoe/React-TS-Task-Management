@@ -166,10 +166,10 @@ function MenuBar() {
 
   const { pathname } = useLocation();
 
-  console.log("loc", pathname);
+  // console.log("loc", pathname);
 
   const handleSave = () => {
-    console.log("payload", payload);
+    // console.log("payload", payload);
     if (!payload) return;
     addTask(payload);
   };

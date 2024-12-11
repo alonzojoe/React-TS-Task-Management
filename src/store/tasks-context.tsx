@@ -58,12 +58,12 @@ export const TasksContextProvider = ({
 
     setIsInvalid(newInvalidState);
     if (newInvalidState.title || newInvalidState.description) return;
-    console.log("payload in ctx", payload);
+    // console.log("payload in ctx", payload);
 
     const { id: taskId } = payload as FormData;
 
     if (typeof taskId === "string") {
-      console.log("task is being updated");
+      // console.log("task is being updated");
       const updatedTask: Task = {
         ...data,
         id: taskId,
@@ -79,10 +79,10 @@ export const TasksContextProvider = ({
         return [];
       });
 
-      console.log("selected task", updatedTask);
+      // console.log("selected task", updatedTask);
       toast.success("Project Updated!");
     } else {
-      console.log("task is being added");
+      // console.log("task is being added");
 
       const newTask: Task = {
         ...data,
@@ -90,7 +90,7 @@ export const TasksContextProvider = ({
         endDate: moment(data.endDate).startOf("day").toDate(),
         id: uuidV4(),
       };
-      console.log("new task", newTask);
+      // console.log("new task", newTask);
       // return;
       setTasks((prevTask) => (prevTask ? [newTask, ...prevTask] : [newTask]));
       toast.success("Project added!");
@@ -114,11 +114,12 @@ export const TasksContextProvider = ({
         };
       }) ?? null;
   } catch (error) {
-    console.error("Error mapping tasks:", error);
+    // console.error("Error mapping tasks:", error);
     updatedTasks = null;
+    throw new Error(`Error mapping tasks: ${error}`);
   }
-  console.log(updatedTasks);
-  console.log("updated t", updatedTasks);
+  // console.log(updatedTasks);
+  // console.log("updated t", updatedTasks);
   const value = {
     tasks: updatedTasks,
     addTask,

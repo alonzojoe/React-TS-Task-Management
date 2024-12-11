@@ -43,7 +43,7 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
 
   const { id } = useParams();
 
-  console.log("id", id);
+  // console.log("id", id);
 
   const selectedTask = useMemo(() => {
     if (!tasks || tasks.length === 0) return null;
@@ -71,7 +71,7 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   }, [isUpdate, formData, id, setPayload, payload, setIsInvalid]);
 
   const selectOption = (alias: string, value: OptionBased) => {
-    console.log("selectedCategory", value);
+    // console.log("selectedCategory", value);
     setFormData((prev) => ({
       ...prev,
       [alias]: value.id,
@@ -89,7 +89,7 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
   };
 
   const selectDate = (key: DateSelection, value: Date | undefined) => {
-    console.log(value);
+    // console.log(value);
     if (value) {
       setFormData((prev) => ({
         ...prev,

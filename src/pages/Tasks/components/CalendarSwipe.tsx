@@ -38,7 +38,7 @@ const CalendarSwipe = ({ onDateSelect }: CalendarSwipeProps) => {
   const handleDayClick = (date: Moment) => {
     setSelectedDate(date);
     onDateSelect(date);
-    console.log(date);
+    // console.log(date);
   };
 
   return (

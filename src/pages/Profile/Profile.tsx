@@ -17,7 +17,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  console.log(profile);
+  // console.log(profile);
 
   const handleUpload = async (file: File): Promise<string> => {
     const formData = new FormData();
@@ -36,7 +36,7 @@ const Profile = () => {
       );
 
       if (response.data?.secure_url) {
-        console.log("cloudinary response:", response.data.secure_url);
+        // console.log("cloudinary response:", response.data.secure_url);
         return response.data.secure_url;
       }
       throw new Error("Missing secure_url in Cloudinary response");
@@ -46,7 +46,7 @@ const Profile = () => {
           `An error occurred while uploading the file: ${error.message}`
         );
       } else {
-        console.error("Unexpected error:", error);
+        // console.error("Unexpected error:", error);
         throw new Error("An unexpected error occurred during file upload");
       }
     }
@@ -61,7 +61,8 @@ const Profile = () => {
       try {
         photoUrl = await handleUpload(selectedPhoto);
       } catch (error) {
-        console.error("Error uploading photo:", error);
+        // console.error("Error uploading photo:", error);
+        throw new Error(`Error uploading photo: ${error}`);
       }
     }
 

@@ -39,7 +39,7 @@ const ProfileForm = ({
     }
   };
 
-  console.log("props stored Profile", storedProfile);
+  // console.log("props stored Profile", storedProfile);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,7 +63,7 @@ const ProfileForm = ({
     });
   };
 
-  console.log("img src", storedProfile?.photo);
+  // console.log("img src", storedProfile?.photo);
   const imgSrc = previewImg
     ? previewImg
     : isUpdate && typeof storedProfile?.photo === "string"

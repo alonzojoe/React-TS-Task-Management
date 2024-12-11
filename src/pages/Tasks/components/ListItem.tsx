@@ -7,7 +7,7 @@ type ListItemProps = {
 };
 
 const ListItem = ({ task }: ListItemProps) => {
-  console.log("list item", task);
+  // console.log("list item", task);
   if (!task.category || !task.status) {
     return (
       <div className="text-danger mx-auto">Task data contains an error</div>
