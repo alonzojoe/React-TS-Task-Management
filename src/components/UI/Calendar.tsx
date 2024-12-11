@@ -1,14 +1,10 @@
-import { DayPicker, getDefaultClassNames } from "react-day-picker";
+import { DayPicker, getDefaultClassNames, Matcher } from "react-day-picker";
 import "react-day-picker/style.css";
 
 type CalendarProps = {
   onSelect: (value: Date | undefined) => void;
   selected: Date | undefined;
-  disabled?: {
-    before?: Date;
-    after?: Date;
-    daysOfWeek?: number[];
-  };
+  disabled?: Matcher;
 };
 // React.Dispatch<React.SetStateAction<Date | undefined>>
 const Calendar = ({ onSelect, selected, disabled }: CalendarProps) => {
