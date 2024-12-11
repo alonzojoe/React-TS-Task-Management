@@ -96,6 +96,12 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
         [key]: value,
       }));
     }
+    if (key === "startDate" && value) {
+      setFormData((prev) => ({
+        ...prev,
+        endDate: value,
+      }));
+    }
     toggleCalendar();
   };
 
@@ -119,6 +125,9 @@ const TaskForm = ({ isUpdate = false }: TaskFormProps) => {
                 activeField === "startDate"
                   ? formData.startDate
                   : formData.endDate
+              }
+              disabled={
+                formData.startDate ? { before: formData.startDate } : undefined
               }
             />
           </div>
