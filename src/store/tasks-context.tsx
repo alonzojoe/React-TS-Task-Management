@@ -99,16 +99,28 @@ export const TasksContextProvider = ({
     navigate("/home/task/lists");
   };
 
-  const updatedTasks = tasks!.map((task) => {
-    return {
-      ...task,
-      startDate: new Date(task.startDate),
-      endDate: new Date(task.endDate),
-    };
-  });
+  let updatedTasks: typeof tasks | null = null;
+
+  try {
+    updatedTasks =
+      tasks?.map((task) => {
+        if (!task.startDate || !task.endDate) {
+          throw new Error("Task dates are invalid or missing");
+        }
+        return {
+          ...task,
+          startDate: new Date(task.startDate),
+          endDate: new Date(task.endDate),
+        };
+      }) ?? null;
+  } catch (error) {
+    console.error("Error mapping tasks:", error);
+    updatedTasks = null;
+  }
+  console.log(updatedTasks);
   console.log("updated t", updatedTasks);
   const value = {
-    tasks: updatedTasks || tasks,
+    tasks: updatedTasks,
     addTask,
     setPayload,
     payload,

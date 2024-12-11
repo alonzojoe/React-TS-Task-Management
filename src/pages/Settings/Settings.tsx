@@ -16,7 +16,7 @@ const Settings = () => {
       setIsLoading(false);
       toast.success("App data cleared.");
       navigate("/");
-    }, 5000);
+    }, 3000);
   };
 
   return (
