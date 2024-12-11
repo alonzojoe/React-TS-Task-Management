@@ -57,7 +57,7 @@ const AppLayout = () => {
     };
     getNavbarHeight();
     window.addEventListener("resize", getNavbarHeight);
-    console.log("useEffect runs");
+    // console.log("useEffect runs");
     return () => {
       window.removeEventListener("resize", getNavbarHeight);
     };
@@ -95,7 +95,7 @@ const AppLayout = () => {
         </div>
         <div>
           <span className="text-textSecondary font-bold text-md">Hello!</span>
-          <h4 className="text-textPrimary text-xl font-bold mb-0 !leading-none">
+          <h4 className="text-textPrimary text-xl font-bold mb-0 !leading-none text-ellipsis whitespace-nowrap overflow-hidden block">
             {fullName}
           </h4>
         </div>

@@ -17,7 +17,8 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  // console.log(profile);
+  const divID = JSON.stringify(profile);
+  console.log("divID", divID);
 
   const handleUpload = async (file: File): Promise<string> => {
     const formData = new FormData();
@@ -77,7 +78,7 @@ const Profile = () => {
 
   if (!storedProfile) return <Navigate to="" />;
   return (
-    <div className="container space-y-5  py-2">
+    <div className="container space-y-5 py-2" id={divID}>
       <ProfileForm
         onSave={handleSaveProfile}
         isUpdate={true}
